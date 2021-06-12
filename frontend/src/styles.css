@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700&display=swap');
+* {
+    font-family: 'Maven Pro', sans-serif;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    background-color: #042030;
+}
+
+body {
+    background-color: #106ca4;
+}
+
+.navbar::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.navbar-container {
+    margin: 0 7%;
+}
+
+.navbar .logo {
+    font-size: 22px;
+    padding: 14px 18px 0 18px;
+}
+
+.f-right {
+    float: right
+}
+
+.navbar .f-right a {
+    font-size: 16px;
+    padding: 18px 18px;
+}
