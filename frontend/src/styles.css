@@ -7,6 +7,7 @@
 
 .navbar {
     background-color: #042030;
+    position: relative;
 }
 
 body {
@@ -27,6 +28,7 @@ body {
 
 .navbar-container {
     margin: 0 7%;
+    position: relative;
 }
 
 .g-container {
@@ -82,7 +84,7 @@ body {
     float: right
 }
 
-.navbar .f-right .navbar-option {
+.navbar-option {
     font-size: 16px;
     padding: 18px 18px;
     transition: .2s ease all;
@@ -92,12 +94,17 @@ body {
     width: 150px;
 }
 
-.navbar .f-right .navbar-option:hover {
+.navbar .f-right {
+    position: relative;
+}
+
+.navbar-option:hover {
     background-color: #0d3e5a;
 }
 
 .burger-btn {
     background-color: transparent;
+    width: fit-content;
     border: none;
     outline: none;
     color: white;
@@ -130,10 +137,17 @@ body {
 }
 
 @media screen and (max-width: 630px) {
-    .navbar-option.navbar-a {
-        display: none;
+    .navbar-option.navbar-a,
+    .navbar .f-right {
+        float: none;
+        display: block;
+        width: 100%;
     }
-    .burger-btn {
-        display: inline-block;
+    .navbar-option.burger-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        cursor: pointer;
     }
 }
