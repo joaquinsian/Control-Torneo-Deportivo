@@ -29,6 +29,50 @@ body {
     margin: 0 7%;
 }
 
+.g-container {
+    padding: 18px;
+    margin: 0 7%;
+}
+
+.m-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 5px;
+}
+
+.f-centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    background-color: #042030;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 10px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .2s ease all
+}
+
+.btn:hover {
+    background-color: #0d3e5a;
+}
+
+.w-100 {
+    width: 100%
+}
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+.div-fc {
+    width: fit-content
+}
+
 .navbar .logo {
     font-size: 22px;
     padding: 14px 18px 0 18px;
@@ -38,7 +82,58 @@ body {
     float: right
 }
 
-.navbar .f-right a {
+.navbar .f-right .navbar-option {
     font-size: 16px;
     padding: 18px 18px;
+    transition: .2s ease all;
+}
+
+.user-circle-regular {
+    width: 150px;
+}
+
+.navbar .f-right .navbar-option:hover {
+    background-color: #0d3e5a;
+}
+
+.burger-btn {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    display: none;
+}
+
+.form-item-container {
+    margin-top: 20px
+}
+
+.input-field {
+    font-size: 16px;
+    padding: 12px 14px;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    outline: none;
+    transition: .2s ease all;
+}
+
+.input-field:focus {
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.1);
+}
+
+.w-std {
+    min-width: 500px
+}
+
+.cont-centered {
+    text-align: center;
+}
+
+@media screen and (max-width: 630px) {
+    .navbar-option.navbar-a {
+        display: none;
+    }
+    .burger-btn {
+        display: inline-block;
+    }
 }

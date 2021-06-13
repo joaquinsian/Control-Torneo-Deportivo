@@ -1,14 +1,17 @@
-<router-outlet>
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a class="logo" href="#">
-                TorneoDeportivo
-            </a>
-            <div class="f-right">
-                <a href="#">Inicio</a>
-                <a href="#">Iniciar Sesión</a>
-                <a href="#">Registrarse</a>
-            </div>
+<nav class="navbar">
+    <div class="navbar-container">
+        <a class="logo" href="#">
+            TorneoDeportivo
+        </a>
+        <div class="f-right">
+            <a class="navbar-option navbar-a" href="#">Inicio</a>
+            <a class="navbar-option navbar-a" href="#">Iniciar Sesión</a>
+            <a class="navbar-option navbar-a" href="#">Registrarse</a>
+            <button class="navbar-option burger-btn"><i class="fal fa-bars"></i></button>
         </div>
-    </nav>
-</router-outlet>
+    </div>
+</nav>
+<div class="g-container">
+    <router-outlet>
+    </router-outlet>
+</div>
