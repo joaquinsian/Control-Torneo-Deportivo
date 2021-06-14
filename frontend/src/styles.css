@@ -147,6 +147,39 @@ body {
     row-gap: 10px;
 }
 
+.table-standard {
+    border-collapse: collapse;
+}
+
+.table-standard td,
+.table-standard th {
+    text-align: left;
+    padding: 12px;
+}
+
+.m-table {
+    border-radius: 5px;
+}
+
+.m-table thead {
+    background-color: #042030;
+    color: white;
+}
+
+.m-table th {
+    text-align: center;
+}
+
+.m-table tbody tr {
+    background-color: white;
+    border: solid #ddd;
+    border-width: 0px 1px 1px 1px;
+}
+
+.m-table tbody tr:nth-child(even) {
+    background-color: #eee;
+}
+
 @media screen and (max-width: 630px) {
     .navbar-option.navbar-a,
     .navbar .f-right {
