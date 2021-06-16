@@ -1,7 +1,8 @@
 'use strict'
+
 const mongoose = require("mongoose");
 const app = require("./app")
-const addAdmin = require("./src/controller/AdminApp.controller")
+const addAdmin = require("./src/controller/AdminApp.controller") 
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/torneodeportivo', {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false}).then(()=>{

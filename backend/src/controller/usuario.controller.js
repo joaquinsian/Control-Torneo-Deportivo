@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt-nodejs");
 //Función de registro
 async function registro(req, res){
     var usuarioModel = new Usuario();
-    var params = req.body;
+    var params = req.body; 
     if(params.nombre && params.usuario && params.email){
         usuarioModel.nombre = params.nombre;
         usuarioModel.usuario = params.usuario;

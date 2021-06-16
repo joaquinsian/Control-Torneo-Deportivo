@@ -8,7 +8,7 @@ async function login(req, res){
     var params = req.body;
     await Usuario.findOne({email: params.email}, (err, userSee)=>{
         if(err){
-            return res.status(500).send({mensaje: "Error en la petición"})
+            return res.status(500).send({mensaje: "Error en la petición"} )
         }else if(userSee){
             bcrypt.compare(params.password, userSee.password, (err, passCorrect)=>{
                 if(passCorrect){
@@ -20,7 +20,7 @@ async function login(req, res){
                     }
                 }else{
                     return res.status(500).send({mensaje: "El usuario no se ha podido identificar"})
-                }
+                } 
             })
         }else{
             return res.status(500).send({mensaje: "El usuario no ha podido ingresar"})
