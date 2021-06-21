@@ -114,16 +114,17 @@ function editarLiga(req, res){
 
 //Función para eliminar la liga
 function eliminarLiga(req, res){
-    const idLiga =req.params.idLiga;
+    var idLiga = req.params.idLiga;
 
-
-    Liga.findByIdAndDelete(idLiga, (err, ligaEliminada)=>{
-        if(err) return res.status(400).send({ mensaje: 'Error en la petición de eliminar '});
-        if(!ligaEliminada) return res.status(200).send({ ligaEliminada });
-
-       
+    Liga.findByIdAndDelete(idLiga, (err, ligaDelete)=>{
+        if(err){
+            return res.status(500).send({mensaje: "Error en la petición"})
+        }else if(!ligaDelete){
+            return res.status(500).send({mensaje: "No se ha podido eliminar la liga"})
+        }else{
+            return res.status(200).send({ligaDelete})
+        }
     })
-
 }
 
 
