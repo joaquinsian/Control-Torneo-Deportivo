@@ -10,34 +10,30 @@ function createLiga(req, res){
 
     if (params.nombre){
         modeloliga.nombre = params.nombre;
-                
-        Liga.find({ $or: [
-            { nombre: modeloliga.nombre},
+        modeloliga.image = params.image;
+        modeloliga.creador = req.user.sub;
+
+        Liga.find({$or: [
+            {nombre: modeloliga.nombre},
+            {image: modeloliga.image}
         ]}).exec((err, ligaEncontrada)=>{
-            if(err) return res.status (500).send ({ mensaje: 'error en la petición'})
-            
-            if (ligaEncontrada && ligaEncontrada.length >= 1) {
-                return res.status(400).send({ mensaje: 'la liga ya existe'})
-            } else {
-
-
-                    modeloliga.save((err, ligaGuardada) =>{
-                        if (err) return res.status(500).send({ mensaje: 'Error al gurdar la liga'})
-
-                        if (ligaGuardada){
-                            res.status(200).send(ligaGuardada)
-                        }else{
-                            res.status(400).send({ mensaje: 'no se ha podido guardar la liga'})
-                        }
-                    })
-                
-
+            if(err){
+                return res.status(500).send({mensaje: "Error en la petición"})
+            }else if(ligaEncontrada && ligaEncontrada.length >= 1){
+                return res.status(500).send({mensaje: "Liga Existente!"})
+            }else{
+                modeloliga.save((err,ligaSave)=>{
+                    if(err){
+                        return res.status(500).send({mensaje: "Error en la petición"})
+                    }else if(!ligaSave){
+                        return res.status(500).send({mensaje: "No se ha podido guardar la liga"})
+                    }else{
+                        return res.status(200).send({ligaSave})
+                    }
+                })
             }
-
         })
-
-    } 
-
+    }
 } 
 
 //mostrar liga
