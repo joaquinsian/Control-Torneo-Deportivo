@@ -36,45 +36,83 @@ function createLiga(req, res){
     }
 } 
 
-//mostrar liga
-function mostrarLiga(req, res){
-    //el find retorna un array
-    Liga.find((err, ligaEncontrada)=>{
-        if(err) return res.status(400).send({ mensaje: 'Error en la petición'})
-        if(!ligaEncontrada) return res.status(400).send({ mensaje: 'Error en la consulta' })
-        return res.status(200).send({ ligaEncontrada})
+//mostrar ligas
+function mostrarLigas(req, res){
+    Liga.find().populate('creador', 'nombre email').exec((err, ligas)=>{
+        if(err){
+            return res.status(500).send({mensaje: "Error en la petición"})
+        }else if(!ligas){
+            return res.status(500).send({mensaje: "No se han podido obtener las ligas"})
+        }else{
+            return res.status(200).send({ligas})
+        }
     })
+}
 
+//Mostrar ligas por el id de usuario
+function ligasForUser(req, res){
+    if(req.user.rol === "Admin_App"){
+        var idUsuario = req.params.idUsuario;
+
+        Liga.find({creador: idUsuario}).populate('creador', 'nombre email').exec((err, ligasUser)=>{
+            if(err){
+                return res.status(500).send({mensaje: "Error en la petición"})
+            }else if(!ligasUser){
+                return res.status(500).send({mensaje: "No se han podido obtener las ligas"})
+            }else{
+                return res.status(200).send({ligasUser})
+            }
+        })
+    }else{
+        return res.status(500).send({mensaje: "No tiene el rol de autirización"})
+    }
+}
+
+//Mostrar mis ligas (del usuario que este logeado)
+function misLigas(req, res){
+    Liga.find({creador: req.user.sub}).populate('creador', 'nombre email').exec((err,misLigas)=>{
+        if(err){
+            return res.status(500).send({mensaje: "Error en la petición"})
+        }else if(!misLigas){
+            return res.status(500).send({mensaje: "No se han podido obtener las ligas"})
+        }else{
+            return res.status(200).send({misLigas})
+        }
+    })
 }
 
 //mostrar liga por Id
 function mostrarLigaID(req, res){
-    var idLiga = req.params.idLiga
-    Liga.findById(idLiga, (err, ligaEncontrada)=>{
-        if(err) return res.status(400).send({mensaje:'Error en obtener la liga'})
-        if(!ligaEncontrada) return res.status(400).send({ mensaje: 'Error al obtener los datos de la liga'})
-        return res.status(200).send({ ligaEncontrada })
+    var idLiga = req.params.idLiga;
 
+    Liga.findById(idLiga).populate('creador', 'nombre email').exec((err, liga)=>{
+        if(err){
+            return res.status(500).send({mensaje: "Error en la petición"})
+        }else if(!liga){
+            return res.status(500).send({mensaje: "No se ha podido obtener la liga"})
+        }else{
+            return res.status(200).send({liga})
+        }
     })
-
 }
 
 //editar liga
 function editarLiga(req, res){
     var idLiga = req.params.idLiga;
     var params = req.body;
-   
 
-    Liga.findByIdAndUpdate(idLiga, params, { new: true }, (err, ligaActualizada)=>{
-        if(err) return res.status(400).send({ mensaje: 'Error en la petición '});
-        if(!ligaActualizada) return res.status(500).send({ mensaje: 'No se ha podido actualizar la liga'});
-        return res.status(200).send({ ligaActualizada });
+    Liga.findByIdAndUpdate(idLiga, params, {new: true}, (err, ligaEditada)=>{
+        if(err){
+            return res.status(500).send({mensaje: "Error en la petición"})
+        }else if(!ligaEditada){
+            return res.status(500).send({mensaje: "No se ha podido editar la liga"})
+        }else{
+            return res.status(200).send({ligaEditada})
+        }
     })
-  
-
 }
 
-
+//Función para eliminar la liga
 function eliminarLiga(req, res){
     const idLiga =req.params.idLiga;
 
@@ -91,7 +129,9 @@ function eliminarLiga(req, res){
 
 module.exports = {
     createLiga,
-    mostrarLiga,
+    mostrarLigas,
+    misLigas,
+    ligasForUser,
     mostrarLigaID,
     editarLiga,
     eliminarLiga
