@@ -96,6 +96,21 @@ async function mostrarLigaID(req, res){
     })
 }
 
+//Mostrar equipos por liga
+async function equiposLiga(req, res){
+    var idLiga = req.params.idLiga;
+
+    await Equipo.findById({liga: idLiga}).populate('liga', 'nombre').exec((err, equipos)=>{
+        if(err){
+            return res.status(500).send({mensaje: "Error en la petición"})
+        }else if(!equipos){
+            return res.status(500).send({mensaje: "No se han podido obtener los equipos"})
+        }else{
+            return res.status(200).send({equipos})
+        }
+    })
+}
+
 //editar liga
 async function editarLiga(req, res){
     var idLiga = req.params.idLiga;
@@ -134,6 +149,7 @@ module.exports = {
     misLigas,
     ligasForUser,
     mostrarLigaID,
+    equiposLiga,
     editarLiga,
     eliminarLiga
 }
