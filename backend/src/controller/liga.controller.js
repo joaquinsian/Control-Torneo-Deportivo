@@ -2,6 +2,7 @@
 
 const Liga = require("../models/liga.model");
 const Equipo = require("../models/equipo.model")
+const Tabla = require("../models/tabla.model");
 
 
 // Create Liga
@@ -112,6 +113,21 @@ async function equiposLiga(req, res){
     })
 }
 
+//Mostrar tabla por liga
+async function tablaLiga(req, res){
+    var idLiga = req.params.idLiga;
+
+    await Tabla.find({'equipo.liga': idLiga}).populate('equipo', 'nombre').exec((err, tabla)=>{
+        if(err){
+            return res.status(500).send({mensaje: "Error en la petición"})
+        }else if(!tabla){
+            return res.status(500).send({mensaje: "No se ha podido obtener la tabla"})
+        }else{
+            return res.status(200).send({tabla})
+        }
+    })
+}
+
 //editar liga
 async function editarLiga(req, res){
     var idLiga = req.params.idLiga;
@@ -151,6 +167,7 @@ module.exports = {
     ligasForUser,
     mostrarLigaID,
     equiposLiga,
+    tablaLiga,
     editarLiga,
     eliminarLiga
 }
