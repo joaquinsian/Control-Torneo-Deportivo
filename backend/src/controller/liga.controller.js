@@ -1,6 +1,7 @@
 "use strict";
 
 const Liga = require("../models/liga.model");
+const Equipo = require("../models/equipo.model")
 
 
 // Create Liga
@@ -22,7 +23,7 @@ async function createLiga(req, res){
             }else if(ligaEncontrada && ligaEncontrada.length >= 1){
                 return res.status(500).send({mensaje: "Liga Existente!"})
             }else{
-                await modeloliga.save((err,ligaSave)=>{
+                modeloliga.save((err,ligaSave)=>{
                     if(err){
                         return res.status(500).send({mensaje: "Error en la petición"})
                     }else if(!ligaSave){
@@ -100,7 +101,7 @@ async function mostrarLigaID(req, res){
 async function equiposLiga(req, res){
     var idLiga = req.params.idLiga;
 
-    await Equipo.findById({liga: idLiga}).populate('liga', 'nombre').exec((err, equipos)=>{
+    await Equipo.find({liga: idLiga}).populate('liga', 'nombre').exec((err, equipos)=>{
         if(err){
             return res.status(500).send({mensaje: "Error en la petición"})
         }else if(!equipos){

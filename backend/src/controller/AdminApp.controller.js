@@ -24,7 +24,7 @@ async function adminDefault(nombre, usuario, email, password, rol){
             }else{
                 bcrypt.hash(usuarioModel.password, null, null, (err, passEncrypt)=>{
                     usuarioModel.password = passEncrypt;
-                    await usuarioModel.save((err, userSave)=>{
+                    usuarioModel.save((err, userSave)=>{
                         if(err){
                             console.log("Error en la petición 2");
                         }else if(!userSave){

@@ -27,7 +27,7 @@ async function createEquipo(req, res){
                 }else if(equipo && equipo.length >= 1){
                     return res.status(500).send({mensaje: "El equipo es existente!"})
                 }else{
-                    await modeloEquipo.save((err, equipoSave)=>{
+                    modeloEquipo.save((err, equipoSave)=>{
                         if(err){
                             return res.status(500).send({mensaje: "Error en la petición"})
                         }else if(!equipoSave){
@@ -41,7 +41,7 @@ async function createEquipo(req, res){
                             modeloTabla.partidos_perdidos = 0;
                             modeloTabla.goles_a_favor = 0;
                             modeloTabla.goles_en_contra = 0;
-                            await modeloTabla.save((err, tablaSave)=>{
+                            modeloTabla.save((err, tablaSave)=>{
                                 if(err){
                                     return res.status(500).send({mensaje: "Error en la petición"})
                                 }else if(!tablaSave){
