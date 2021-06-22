@@ -62,19 +62,20 @@ async function createEquipo(req, res){
 }
 
 //mostrar equipo
-async function mostrarEquipo(req, res){
-  
-
-    await Equipo.find().populate('liga').exec((err, equipoEncontrado) => {
-        if(err) return res.status(400).send({ mensaje: 'Error en la petición'})
-        if(!equipoEncontrado)return res.status(400).send({ mensaje: 'Error en la consulta' })
-        return res.status(200).send({ equipoEncontrado })
+async function mostrarEquipos(req, res){
+    await Equipo.find().populate('liga','nombre').exec((err, equipos)=>{
+        if(err){
+            return res.status(500).send({mensaje: "Error en la petición"})
+        }else if(!equipos){
+            return res.status(500).send({mensaje: "No se han podido obtener los equipos"})
+        }else{
+            return res.status(200).send({equipos})
+        }
     })
-
 }
 
 
 module.exports = {
     createEquipo,
-    mostrarEquipo
+    mostrarEquipos
 }
