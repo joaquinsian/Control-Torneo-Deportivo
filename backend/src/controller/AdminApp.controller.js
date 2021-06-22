@@ -13,7 +13,7 @@ async function adminDefault(nombre, usuario, email, password, rol){
         usuarioModel.password = password;
         usuarioModel.rol = rol;
 
-        Usuario.find({$or: [
+        await Usuario.find({$or: [
             {usuario: usuarioModel.usuario},
             {email: usuarioModel.email}
         ]}).exec((err, usuarioEncontrado)=>{
@@ -24,7 +24,7 @@ async function adminDefault(nombre, usuario, email, password, rol){
             }else{
                 bcrypt.hash(usuarioModel.password, null, null, (err, passEncrypt)=>{
                     usuarioModel.password = passEncrypt;
-                    usuarioModel.save((err, userSave)=>{
+                    await usuarioModel.save((err, userSave)=>{
                         if(err){
                             console.log("Error en la petición 2");
                         }else if(!userSave){

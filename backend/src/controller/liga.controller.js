@@ -4,7 +4,7 @@ const Liga = require("../models/liga.model");
 
 
 // Create Liga
-function createLiga(req, res){
+async function createLiga(req, res){
     var modeloliga = new Liga();
     var params = req.body;
 
@@ -13,7 +13,7 @@ function createLiga(req, res){
         modeloliga.image = params.image;
         modeloliga.creador = req.user.sub;
 
-        Liga.find({$or: [
+        await Liga.find({$or: [
             {nombre: modeloliga.nombre},
             {image: modeloliga.image}
         ]}).exec((err, ligaEncontrada)=>{
@@ -22,7 +22,7 @@ function createLiga(req, res){
             }else if(ligaEncontrada && ligaEncontrada.length >= 1){
                 return res.status(500).send({mensaje: "Liga Existente!"})
             }else{
-                modeloliga.save((err,ligaSave)=>{
+                await modeloliga.save((err,ligaSave)=>{
                     if(err){
                         return res.status(500).send({mensaje: "Error en la petición"})
                     }else if(!ligaSave){
@@ -37,8 +37,8 @@ function createLiga(req, res){
 } 
 
 //mostrar ligas
-function mostrarLigas(req, res){
-    Liga.find().populate('creador', 'nombre email').exec((err, ligas)=>{
+async function mostrarLigas(req, res){
+    await Liga.find().populate('creador', 'nombre email').exec((err, ligas)=>{
         if(err){
             return res.status(500).send({mensaje: "Error en la petición"})
         }else if(!ligas){
@@ -50,11 +50,11 @@ function mostrarLigas(req, res){
 }
 
 //Mostrar ligas por el id de usuario
-function ligasForUser(req, res){
+async function ligasForUser(req, res){
     if(req.user.rol === "Admin_App"){
         var idUsuario = req.params.idUsuario;
 
-        Liga.find({creador: idUsuario}).populate('creador', 'nombre email').exec((err, ligasUser)=>{
+        await Liga.find({creador: idUsuario}).populate('creador', 'nombre email').exec((err, ligasUser)=>{
             if(err){
                 return res.status(500).send({mensaje: "Error en la petición"})
             }else if(!ligasUser){
@@ -69,8 +69,8 @@ function ligasForUser(req, res){
 }
 
 //Mostrar mis ligas (del usuario que este logeado)
-function misLigas(req, res){
-    Liga.find({creador: req.user.sub}).populate('creador', 'nombre email').exec((err,misLigas)=>{
+async function misLigas(req, res){
+    await Liga.find({creador: req.user.sub}).populate('creador', 'nombre email').exec((err,misLigas)=>{
         if(err){
             return res.status(500).send({mensaje: "Error en la petición"})
         }else if(!misLigas){
@@ -82,10 +82,10 @@ function misLigas(req, res){
 }
 
 //mostrar liga por Id
-function mostrarLigaID(req, res){
+async function mostrarLigaID(req, res){
     var idLiga = req.params.idLiga;
 
-    Liga.findById(idLiga).populate('creador', 'nombre email').exec((err, liga)=>{
+    await Liga.findById(idLiga).populate('creador', 'nombre email').exec((err, liga)=>{
         if(err){
             return res.status(500).send({mensaje: "Error en la petición"})
         }else if(!liga){
@@ -97,11 +97,11 @@ function mostrarLigaID(req, res){
 }
 
 //editar liga
-function editarLiga(req, res){
+async function editarLiga(req, res){
     var idLiga = req.params.idLiga;
     var params = req.body;
 
-    Liga.findByIdAndUpdate(idLiga, params, {new: true}, (err, ligaEditada)=>{
+    await Liga.findByIdAndUpdate(idLiga, params, {new: true}, (err, ligaEditada)=>{
         if(err){
             return res.status(500).send({mensaje: "Error en la petición"})
         }else if(!ligaEditada){
@@ -113,10 +113,10 @@ function editarLiga(req, res){
 }
 
 //Función para eliminar la liga
-function eliminarLiga(req, res){
+async function eliminarLiga(req, res){
     var idLiga = req.params.idLiga;
 
-    Liga.findByIdAndDelete(idLiga, (err, ligaDelete)=>{
+    await Liga.findByIdAndDelete(idLiga, (err, ligaDelete)=>{
         if(err){
             return res.status(500).send({mensaje: "Error en la petición"})
         }else if(!ligaDelete){

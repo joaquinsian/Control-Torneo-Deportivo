@@ -18,7 +18,7 @@ async function createEquipo(req, res){
             modeloEquipo.imagen = params.imagen;
             modeloEquipo.liga = params.liga;
 
-            Equipo.find({$or: [
+            await Equipo.find({$or: [
                 {nombre: modeloEquipo.nombre},
                 {imagen: modeloEquipo.imagen}
             ]}).exec((err, equipo)=>{
@@ -27,7 +27,7 @@ async function createEquipo(req, res){
                 }else if(equipo && equipo.length >= 1){
                     return res.status(500).send({mensaje: "El equipo es existente!"})
                 }else{
-                    modeloEquipo.save((err, equipoSave)=>{
+                    await modeloEquipo.save((err, equipoSave)=>{
                         if(err){
                             return res.status(500).send({mensaje: "Error en la petición"})
                         }else if(!equipoSave){
@@ -41,7 +41,7 @@ async function createEquipo(req, res){
                             modeloTabla.partidos_perdidos = 0;
                             modeloTabla.goles_a_favor = 0;
                             modeloTabla.goles_en_contra = 0;
-                            modeloTabla.save((err, tablaSave)=>{
+                            await modeloTabla.save((err, tablaSave)=>{
                                 if(err){
                                     return res.status(500).send({mensaje: "Error en la petición"})
                                 }else if(!tablaSave){
@@ -62,10 +62,10 @@ async function createEquipo(req, res){
 }
 
 //mostrar equipo
-function mostrarEquipo(req, res){
+async function mostrarEquipo(req, res){
   
 
-    Equipo.find().populate('liga').exec((err, equipoEncontrado) => {
+    await Equipo.find().populate('liga').exec((err, equipoEncontrado) => {
         if(err) return res.status(400).send({ mensaje: 'Error en la petición'})
         if(!equipoEncontrado)return res.status(400).send({ mensaje: 'Error en la consulta' })
         return res.status(200).send({ equipoEncontrado })
