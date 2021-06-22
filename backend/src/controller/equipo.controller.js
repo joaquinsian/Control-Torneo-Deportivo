@@ -89,8 +89,25 @@ async function equipoId(req, res){
     })
 }
 
+//Función para editar el equipo
+async function editarEquipo(req, res){
+    var idEquipo = req.params.idEquipo;
+    var params = req.body;
+
+    await Equipo.findByIdAndUpdate(idEquipo, params, {new: true}, (err, equipoEditado)=>{
+        if(err){
+            return res.status(500).send({mensaje: "Error en la petición"})
+        }else if(!equipoEditado){
+            return res.status(500).send({mensaje: "No se ha podido editar el equipo"})
+        }else{
+            return res.status(200).send({equipoEditado})
+        }
+    })
+}
+
 module.exports = {
     createEquipo,
     mostrarEquipos,
-    equipoId
+    equipoId,
+    editarEquipo
 }
