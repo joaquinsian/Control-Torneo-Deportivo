@@ -11,6 +11,7 @@ api.get('/mostrarLigas', ligaController.mostrarLigas);
 api.get('/ligasUser/:idUsuario', autentication.ensureAuth, ligaController.ligasForUser)
 api.get('/misLigas', autentication.ensureAuth, ligaController.misLigas)
 api.get('/mostrarLigaID/:idLiga', ligaController.mostrarLigaID);
+api.get('/equiposLiga/:idLiga', ligaController.equiposLiga)
 api.put('/editarLiga/:idLiga', ligaController.editarLiga);
 api.delete('/eliminarLiga/:idLiga', ligaController.eliminarLiga);
 
