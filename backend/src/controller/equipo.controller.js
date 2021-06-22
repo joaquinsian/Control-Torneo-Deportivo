@@ -105,9 +105,25 @@ async function editarEquipo(req, res){
     })
 }
 
+//Función para eliminar un equipo
+async function eliminarEquipo(req, res){
+    var idEquipo = req.params.idEquipo;
+
+    await Equipo.findByIdAndDelete(idEquipo, (err, equipoEliminado)=>{
+        if(err){
+            return res.status(500).send({mensaje: "Error en la petición"})
+        }else if(!equipoEliminado){
+            return res.status(500).send({mensaje: "No se ha podido eliminar el equipo"})
+        }else{
+            return res.status(200).send({equipoEliminado})
+        }
+    })
+}
+
 module.exports = {
     createEquipo,
     mostrarEquipos,
     equipoId,
-    editarEquipo
+    editarEquipo,
+    eliminarEquipo
 }
