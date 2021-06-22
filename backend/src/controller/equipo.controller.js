@@ -61,7 +61,7 @@ async function createEquipo(req, res){
     }
 }
 
-//mostrar equipo
+//mostrar equipos
 async function mostrarEquipos(req, res){
     await Equipo.find().populate('liga','nombre').exec((err, equipos)=>{
         if(err){
@@ -74,8 +74,23 @@ async function mostrarEquipos(req, res){
     })
 }
 
+//Función para obtener equipos por id
+async function equipoId(req, res){
+    var idEquipo = req.params.idEquipo;
+
+    await Equipo.findById(idEquipo).populate('liga', 'nombre').exec((err, equipo)=>{
+        if(err){
+            return res.status(500).send({mensaje: "Error en la petición"})
+        }else if(!equipo){
+            return res.status(500).send({mensaje: "No se ha podido obtener el equipo"})
+        }else{
+            return res.status(200).send({equipo})
+        }
+    })
+}
 
 module.exports = {
     createEquipo,
-    mostrarEquipos
+    mostrarEquipos,
+    equipoId
 }
