@@ -33,8 +33,25 @@ async function editarTabla(req, res){
 }
 
 //Función para editar la tabla por id de tabla
+async function editarTablaId(req, res){
+    var idTabla = req.params.idTabla
+    var params = req.body;
+
+    delete params.equipo;
+
+    await Tabla.findByIdAndUpdate(idTabla, params, {new: true}, (err, tablaEditada)=>{
+        if(err){
+            return res.status(500).send({mensaje: "Error en la petición"})
+        }else if(!tablaEditada){
+            return res.status(500).send({mensaje: "No se ha podido editar la tabla"})
+        }else{
+            return res.status(200).send({tablaEditada})
+        }
+    })
+}
 
 module.exports = {
     obtenerTabla,
-    editarTabla
+    editarTabla,
+    editarTablaId
 }
