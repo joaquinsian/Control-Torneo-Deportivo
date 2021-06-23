@@ -115,6 +115,15 @@ async function eliminarEquipo(req, res){
         }else if(!equipoEliminado){
             return res.status(500).send({mensaje: "No se ha podido eliminar el equipo"})
         }else{
+            Tabla.findOneAndDelete({equipo: idEquipo}, (err, deleteTabla)=>{
+                if(err){
+                    console.log(err);
+                }else if(!deleteTabla){
+                    console.log(deleteTabla);
+                }else{
+                    console.log(deleteTabla);
+                }
+            })
             return res.status(200).send({equipoEliminado})
         }
     })
