@@ -1,6 +1,19 @@
 'use strict'
 var Tabla = require('../models/tabla.model')
 
+//Función para obtener tabla completa
+async function tablaCompleta(req, res){
+    await Tabla.find().populate('equipo', 'nombre').exec((err, tabla)=>{
+        if(err){
+            return res.status(500).send({mensaje: "Error en la petición"})
+        }else if(!tabla){
+            return res.status(500).send({mensaje: "No se ha podido obtener la tabla"})
+        }else{
+            return res.status(200).send({tabla})
+        }
+    })
+}
+
 //Función para obtener tabla por Id
 async function obtenerTabla(req, res){
     var idTabla = req.params.idTabla;
@@ -51,6 +64,7 @@ async function editarTablaId(req, res){
 }
 
 module.exports = {
+    tablaCompleta,
     obtenerTabla,
     editarTabla,
     editarTablaId
