@@ -116,8 +116,8 @@ async function equiposLiga(req, res){
 //Mostrar tabla por liga
 async function tablaLiga(req, res){
     var idLiga = req.params.idLiga;
-
-    await Tabla.find({'equipo.liga': idLiga}, (err,tabla)=>{
+    var Equipos = await Equipo.find({liga: idLiga})
+    await Tabla.find({equipo: Equipos}).populate('equipo', 'nombre').exec((err, tabla)=>{
         if(err){
             return res.status(500).send({mensaje: "Error en la petición"})
         }else if(!tabla){
