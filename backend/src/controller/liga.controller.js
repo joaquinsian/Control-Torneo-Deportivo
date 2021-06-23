@@ -154,6 +154,15 @@ async function eliminarLiga(req, res){
         }else if(!ligaDelete){
             return res.status(500).send({mensaje: "No se ha podido eliminar la liga"})
         }else{
+            Equipo.deleteMany({liga: idLiga}, (err,equipoDelete)=>{
+                if(err){
+                    console.log(err);
+                }else if(!equipoDelete){
+                    console.log(equipoDelete);
+                }else{
+                    console.log(equipoDelete);
+                }
+            })
             return res.status(200).send({ligaDelete})
         }
     })
