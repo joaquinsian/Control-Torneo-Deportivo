@@ -3,6 +3,8 @@
 const Liga = require("../models/liga.model");
 const Equipo = require("../models/equipo.model")
 const Tabla = require("../models/tabla.model");
+const pdfGenerador = require('../utils/pdf/pdf.generator')
+const ObjectId = require('mongodb').ObjectID
 
 
 // Create Liga
@@ -177,6 +179,22 @@ async function eliminarLiga(req, res){
     })
 }
 
+//Generar reporte de equipos por liga
+async function generarPDF(req, res){
+    const idLiga = req.params.idLiga;
+    var obj = [];
+    await Equipo.find({liga: idLiga}, (err, datos)=>{
+        if(err){
+            return res.status(500).send({mensaje: "Error en la petición"})
+        }else if(!datos){
+            return res.status(500).send({mensaje: "No se han podido obtener los datos"})
+        }else{
+            obj = datos;
+        }
+    })
+    pdfGenerador.generarPDF(obj).then(datos => res.download(datos.filename))
+}
+
 
 module.exports = {
     createLiga,
@@ -187,7 +205,9 @@ module.exports = {
     equiposLiga,
     tablaLiga,
     editarLiga,
-    eliminarLiga
+    eliminarLiga,
+    //Reportes
+    generarPDF
 }
 
 

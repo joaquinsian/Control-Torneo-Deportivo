@@ -86,7 +86,7 @@ const generarBody = (datos) => {
        content += 
        `
        <tr style="" bgcolor="#f2f2f2">
-       <th style="line-height: 24px; font-size: 16px; margin: 0;" align="left"><img src="${data.imagen}"></th>
+       <th style="line-height: 24px; font-size: 16px; margin: 0;" align="left"><img style="width: 100px; height: 100px; object-fit: contain;" src="${data.imagen}"></th>
        <td style="border-spacing: 0px; border-collapse: collapse; line-height: 24px; font-size: 16px; border-top-width: 1px; border-top-color: #dee2e6; border-top-style: solid; margin: 0; padding: 12px;" align="left" valign="top">${data.nombre}</td>
        <td style="border-spacing: 0px; border-collapse: collapse; line-height: 24px; font-size: 16px; border-top-width: 1px; border-top-color: #dee2e6; border-top-style: solid; margin: 0; padding: 12px;" align="left" valign="top">${data.liga}</td>
        </tr>
