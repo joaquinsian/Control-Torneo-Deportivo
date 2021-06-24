@@ -144,26 +144,35 @@ async function editarLiga(req, res){
     })
 }
 
-//Función para eliminar la liga
+//Función para eliminar Liga
 async function eliminarLiga(req, res){
     var idLiga = req.params.idLiga;
-
-    await Liga.findByIdAndDelete(idLiga, (err, ligaDelete)=>{
+    var Equipos = await Equipo.find({liga: idLiga})
+    await Tabla.deleteMany({equipo: Equipos}, (err, equiposTabla)=>{
         if(err){
-            return res.status(500).send({mensaje: "Error en la petición"})
-        }else if(!ligaDelete){
-            return res.status(500).send({mensaje: "No se ha podido eliminar la liga"})
+            console.log("Error en la petición");
+        }else if(!equiposTabla){
+            console.log("No se han podido eliminar los equipos en la tabla");
         }else{
-            Equipo.deleteMany({liga: idLiga}, (err,equipoDelete)=>{
+            Equipo.deleteMany({liga: idLiga}, (err, equiposLiga)=>{
                 if(err){
-                    console.log(err);
-                }else if(!equipoDelete){
-                    console.log(equipoDelete);
+                    console.log("Error en la petición:" + err);
+                }else if(!equiposLiga){
+                    console.log("No se pudieron eliminar los equipos de la liga: "+ equiposLiga);
                 }else{
-                    console.log(equipoDelete);
+                    Liga.findByIdAndDelete(idLiga, (err, deleteLiga)=>{
+                        if(err){
+                            return res.status(500).send({mensaje: "Error en la petición"})
+                        }else if(!deleteLiga){
+                            return res.status(500).send({mensaje: "No se ha podido eliminar la liga"})
+                        }else{
+                            return res.status(200).send({deleteLiga})
+                        }
+                    })
+                    console.log("Éxito por eliminar los equipos en la liga");
                 }
             })
-            return res.status(200).send({ligaDelete})
+            console.log("Éxito por eliminar los equipos de la tabla");
         }
     })
 }
