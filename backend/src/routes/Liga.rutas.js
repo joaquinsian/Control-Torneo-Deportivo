@@ -17,5 +17,6 @@ api.put('/editarLiga/:idLiga', ligaController.editarLiga);
 api.delete('/eliminarLiga/:idLiga', ligaController.eliminarLiga);
 //Reportes
 api.get('/reporteEquiposLiga/:idLiga', ligaController.generarPDF)
+api.get('/reporteTablaLiga/:idLiga', ligaController.generadorTablaLiga)
 
 module.exports = api;
