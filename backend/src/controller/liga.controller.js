@@ -5,7 +5,6 @@ const Equipo = require("../models/equipo.model")
 const Tabla = require("../models/tabla.model");
 const pdfGenerador = require('../utils/pdf/pdf.generator')
 const pdfTablaLiga = require('../utils/pdf/reporteTablaLiga.generator')
-const ObjectId = require('mongodb').ObjectID
 
 
 // Create Liga
@@ -201,15 +200,16 @@ async function generadorTablaLiga(req, res){
     var idLiga = req.params.idLiga;
     var Equipos = await Equipo.find({liga: idLiga})
     var obj = [];
-    await Tabla.find({equipo: Equipos}, (err, datos)=>{
+    const tabla = await Tabla.find({equipo: Equipos}, (err, datos)=>{
         if(err){
             return res.status(500).send({mensaje: "Error en la petición"})
         }else if(!datos){
             return res.status(500).send({mensaje: "No se ha podido obtener los equipos de la tabla"})
         }else{
-            obj = datos;
+            console.log(datos);
         }
-    })
+    }).sort({puntaje: -1})
+    obj = tabla;
     pdfTablaLiga.generadorTablaLiga(obj).then(datos => res.download(datos.filename))
 }
 
