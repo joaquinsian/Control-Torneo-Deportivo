@@ -6,7 +6,7 @@ const jwt = require("../services/jwt")
 //Función para logear
 async function login(req, res){
     var params = req.body;
-    await Usuario.findOne({email: params.email}, (err, userSee)=>{
+    await Usuario.findOne({usuario: params.usuario}, (err, userSee)=>{
         if(err){
             return res.status(500).send({mensaje: "Error en la petición"} )
         }else if(userSee){
