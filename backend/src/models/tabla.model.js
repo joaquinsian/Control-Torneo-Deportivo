@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var TablaSchema = Schema({
-    equipo: {type: Schema.Types.ObjectId, ref: 'equipo'},
+    equipo: [
+        {type: Schema.Types.ObjectId, ref: 'equipo'}
+    ],
     puntaje: Number,
     partidos_jugados: Number,
     partidos_ganados: Number,
