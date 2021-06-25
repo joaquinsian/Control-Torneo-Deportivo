@@ -147,5 +147,5 @@ const generarBody = (datos) => {
 exports.generarPDF = (datos)=>{
     content = "";
     generarBody(datos);
-    return pdf.createAsync(content, {filename: `./utils/pdf/ligas_${today}.pdf`})
+    return pdf.createAsync(content, {filename: `../src/utils/pdf/ligas_${today}.pdf`})
 }
