@@ -16,7 +16,7 @@ async function createEquipo(req, res){
         if(params.nombre){
             modeloEquipo.nombre = params.nombre;
             modeloEquipo.imagen = params.imagen;
-            modeloEquipo.liga = [params.liga];
+            modeloEquipo.liga = params.liga;
 
             await Equipo.find({$or: [
                 {nombre: modeloEquipo.nombre},
@@ -33,7 +33,7 @@ async function createEquipo(req, res){
                         }else if(!equipoSave){
                             return res.status(500).send({mensaje: "No se ha podido almacenar el equipo"})
                         }else{
-                            modeloTabla.equipo = [equipoSave._id];
+                            modeloTabla.equipo = equipoSave._id;
                             modeloTabla.puntaje = 0;
                             modeloTabla.partidos_jugados = 0;
                             modeloTabla.partidos_ganados = 0;
