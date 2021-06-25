@@ -77,7 +77,6 @@ const generarBody = (datos) => {
         <tr>
           <th scope="col" style="line-height: 24px; font-size: 16px; border-bottom-width: 2px; border-bottom-color: #dee2e6; border-bottom-style: solid; border-top-width: 1px; border-top-color: #dee2e6; border-top-style: solid; margin: 0; padding: 12px;" align="left" valign="top">Equipo</th>
           <th scope="col" style="line-height: 24px; font-size: 16px; border-bottom-width: 2px; border-bottom-color: #dee2e6; border-bottom-style: solid; border-top-width: 1px; border-top-color: #dee2e6; border-top-style: solid; margin: 0; padding: 12px;" align="left" valign="top">Nombre</th>
-          <th scope="col" style="line-height: 24px; font-size: 16px; border-bottom-width: 2px; border-bottom-color: #dee2e6; border-bottom-style: solid; border-top-width: 1px; border-top-color: #dee2e6; border-top-style: solid; margin: 0; padding: 12px;" align="left" valign="top">Liga</th>
         </tr>
       </thead>
       <tbody>
@@ -88,7 +87,6 @@ const generarBody = (datos) => {
        <tr style="" bgcolor="#f2f2f2">
        <th style="line-height: 24px; font-size: 16px; margin: 0;" align="left"><img style="width: 100px; height: 100px; object-fit: contain;" src="${data.imagen}"></th>
        <td style="border-spacing: 0px; border-collapse: collapse; line-height: 24px; font-size: 16px; border-top-width: 1px; border-top-color: #dee2e6; border-top-style: solid; margin: 0; padding: 12px;" align="left" valign="top">${data.nombre}</td>
-       <td style="border-spacing: 0px; border-collapse: collapse; line-height: 24px; font-size: 16px; border-top-width: 1px; border-top-color: #dee2e6; border-top-style: solid; margin: 0; padding: 12px;" align="left" valign="top">${data.liga}</td>
        </tr>
        `
    }
@@ -147,5 +145,5 @@ const generarBody = (datos) => {
 exports.generarPDF = (datos)=>{
     content = "";
     generarBody(datos);
-    return pdf.createAsync(content, {filename: `../src/utils/pdf/ligas_${today}.pdf`})
+    return pdf.createAsync(content, {filename: `/utils/pdf/ligas_${today}.pdf`})
 }
