@@ -17,5 +17,5 @@ mongoose.connect('mongodb://localhost:27017/torneodeportivo', {useNewUrlParser: 
 
 //Admin por defaul
 const createAdminApp = () =>{
-    addAdmin.adminDefault("Jorge Morataya","jmorataya","jmorataya@kinal.edu.gt","12345678","Admin_App");
+    addAdmin.adminDefault("Admin","ADMIN","admin@kinal.edu.gt","deportes123","Admin_App");
 }
