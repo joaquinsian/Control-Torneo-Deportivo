@@ -228,5 +228,3 @@ module.exports = {
     generarPDF,
     generadorTablaLiga
 }
-
-
