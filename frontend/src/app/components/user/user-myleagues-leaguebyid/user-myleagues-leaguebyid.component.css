@@ -1,0 +1,49 @@
+.purple-button,
+.yellow-button,
+.turquoise-button,
+.add-btn {
+    height: 50px;
+}
+
+.purple-button {
+    background-color: #6F1E51;
+}
+
+.purple-button:hover {
+    background-color: #640240;
+}
+
+.yellow-button {
+    background-color: #F79F1F;
+}
+
+.yellow-button:hover {
+    background-color: #d37f00;
+}
+
+.turquoise-button {
+    background-color: #006266;
+}
+
+.turquoise-button:hover {
+    background-color: #003e41;
+}
+
+.logo {
+    width: 50%;
+    max-width: 500px;
+}
+
+.title-league {
+    font-size: 50px;
+    color: #e74c3c
+}
+
+@media screen and (max-width: 630px) {
+    .logo {
+        width: 90%;
+    }
+    .title-league {
+        font-size: 35px;
+    }
+}

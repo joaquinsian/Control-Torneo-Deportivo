@@ -197,6 +197,15 @@ body {
     font-size: 18px;
 }
 
+.add-btn {
+    background-color: #2ecc71;
+    transition: .2s ease all;
+}
+
+.add-btn:hover {
+    background-color: #0aa34a;
+}
+
 .delete-edit-buttons-container {
     position: absolute;
     top: 7px;
@@ -232,6 +241,42 @@ body {
     background-color: #ffcc00;
 }
 
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.left-column,
+.right-column {
+    float: left;
+    width: 50%;
+}
+
+.m-t-40 {
+    margin-top: 40px;
+}
+
+.m-t-20 {
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 1045px) {
+    .grid-4 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .left-column,
+    .right-column {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media screen and (max-width: 630px) {
     .navbar-option.navbar-a,
     .navbar .f-right {
@@ -245,5 +290,9 @@ body {
         right: 0;
         display: block;
         cursor: pointer;
+    }
+    .grid-4,
+    .grid-2 {
+        grid-template-columns: repeat(1, 1fr);
     }
 }

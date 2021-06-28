@@ -8,6 +8,8 @@ import { SignupComponent } from './components/signup/signup.component';
 import { IndexComponent } from './components/index/index.component';
 import { AdminAllUsersComponent } from './components/admin/admin-all-users/admin-all-users.component';
 import { UserMyleaguesComponent } from './components/user/user-myleagues/user-myleagues.component';
+import { UserMyleaguesLeaguebyidComponent } from './components/user/user-myleagues-leaguebyid/user-myleagues-leaguebyid.component';
+import { AddTeamComponent } from './components/user/user-myleagues-leaguebyid/add-team/add-team.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { UserMyleaguesComponent } from './components/user/user-myleagues/user-my
     SignupComponent,
     IndexComponent,
     AdminAllUsersComponent,
-    UserMyleaguesComponent
+    UserMyleaguesComponent,
+    UserMyleaguesLeaguebyidComponent,
+    AddTeamComponent
     ],
   imports: [
     BrowserModule,
