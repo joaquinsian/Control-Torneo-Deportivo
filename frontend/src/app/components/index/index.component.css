@@ -2,6 +2,11 @@
     width: 100px;
 }
 
+.option-panel {
+    text-decoration: none;
+    color: black
+}
+
 .option-panel img {
     width: 65px;
 }

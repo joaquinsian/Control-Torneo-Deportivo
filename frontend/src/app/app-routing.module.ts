@@ -4,6 +4,7 @@ import { AdminAllUsersComponent } from './components/admin/admin-all-users/admin
 import { IndexComponent } from './components/index/index.component';
 import { SigninComponent } from "./components/signin/signin.component";
 import { SignupComponent } from './components/signup/signup.component';
+import { UserMyleaguesComponent } from './components/user/user-myleagues/user-myleagues.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,9 @@ const routes: Routes = [
   },{
     path: "admin/all-users",
     component: AdminAllUsersComponent
+  },{
+    path: "user/my-leagues",
+    component: UserMyleaguesComponent
   }
 ];
 
