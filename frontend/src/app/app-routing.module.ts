@@ -6,6 +6,7 @@ import { SigninComponent } from "./components/signin/signin.component";
 import { SignupComponent } from './components/signup/signup.component';
 import { UserMyleaguesComponent } from './components/user/user-myleagues/user-myleagues.component';
 import { UserMyleaguesLeaguebyidComponent } from './components/user/user-myleagues-leaguebyid/user-myleagues-leaguebyid.component';
+import { AddTeamComponent } from './components/user/user-myleagues-leaguebyid/add-team/add-team.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,9 @@ const routes: Routes = [
   },{
     path: "user/my-leagues/league",
     component: UserMyleaguesLeaguebyidComponent
+  },{
+    path: "user/my-leagues/league/add-team",
+    component: AddTeamComponent
   }
 ];
 

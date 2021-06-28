@@ -10,6 +10,7 @@ import { AdminAllUsersComponent } from './components/admin/admin-all-users/admin
 import { UserMyleaguesComponent } from './components/user/user-myleagues/user-myleagues.component';
 import { UserMyleaguesLeaguebyidComponent } from './components/user/user-myleagues-leaguebyid/user-myleagues-leaguebyid.component';
 import { AddTeamComponent } from './components/user/user-myleagues-leaguebyid/add-team/add-team.component';
+import { GetTableComponent } from './components/user/user-myleagues-leaguebyid/get-table/get-table.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AddTeamComponent } from './components/user/user-myleagues-leaguebyid/ad
     AdminAllUsersComponent,
     UserMyleaguesComponent,
     UserMyleaguesLeaguebyidComponent,
-    AddTeamComponent
+    AddTeamComponent,
+    GetTableComponent
     ],
   imports: [
     BrowserModule,
