@@ -190,7 +190,7 @@ async function generarPDF(req, res){
         }else if(!datos){
             return res.status(500).send({mensaje: "No se han podido obtener los equipos"})
         }else{
-            console.log(datos);
+            console.log("Equipos encontrados");
         }
     })
     pdfGenerador.generarPDF(equipos).then(datos => res.download(datos.filename))
