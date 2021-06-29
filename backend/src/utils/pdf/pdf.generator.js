@@ -1,9 +1,9 @@
 'use strict';
 const Promise = require('bluebird')
-const pdf = Promise.promisifyAll(require('html-pdf'));
+//const pdf = Promise.promisifyAll(require('html-pdf'));
+const pdf = require('html-pdf')
 const moment = require('moment');
 let today = moment().format('D MMM, YYYY');
-let todaym = moment().format('DMMMYYYY');
 let content = "";
 const generarBody = (datos) => {
     content += `
@@ -59,7 +59,7 @@ const generarBody = (datos) => {
         <tr>
           <td style="border-spacing: 0px; border-collapse: collapse; line-height: 24px; font-size: 16px; width: 100%; margin: 0; padding: 20px;" align="left">
             <div>
-              <h1 class="text-center" style="margin-top: 0; margin-bottom: 0; font-weight: 500; vertical-align: baseline; font-size: 36px; line-height: 43.2px;" align="center">Equipos por Liga</h1>
+              <h1 class="text-center" style="margin-top: 0; margin-bottom: 0; font-weight: 500; vertical-align: baseline; font-size: 36px; line-height: 43.2px;" align="center">"Equipos por Liga"</h1>
               <h5 class="text-muted  text-center" style="margin-top: 0; margin-bottom: 0; font-weight: 500; vertical-align: baseline; font-size: 20px; line-height: 24px; color: #636c72;" align="center">${today}</h5>
     <table class="s-2 w-100" border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
       <tbody>
@@ -85,8 +85,8 @@ const generarBody = (datos) => {
        content += 
        `
        <tr style="" bgcolor="#f2f2f2">
-       <th style="line-height: 24px; font-size: 16px; margin: 0;" align="left"><img style="width: 100px; height: 100px; object-fit: contain;" src="${data.imagen}"></th>
-       <td style="border-spacing: 0px; border-collapse: collapse; line-height: 24px; font-size: 16px; border-top-width: 1px; border-top-color: #dee2e6; border-top-style: solid; margin: 0; padding: 12px;" align="left" valign="top">${data.nombre}</td>
+       <th style="line-height: 24px; font-size: 16px; margin: 0;" align="left"><img style="width: 80px; height: 80px; object-fit: contain;" src="${data.imagen}"></th>
+       <td style="border-spacing: 0px; border-collapse: collapse; line-height: 24px; font-size: 20px; border-top-width: 1px; border-top-color: #dee2e6; border-top-style: solid; margin: 0; padding: 12px;" align="left" valign="top">${data.nombre}</td>
        </tr>
        `
    }

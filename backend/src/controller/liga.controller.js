@@ -179,20 +179,21 @@ async function eliminarLiga(req, res){
     })
 }
 
+/*-------------------------------------------------- PARTE DE LOS REPORTES -----------------------------------------------------------------*/
+
 //Generar reporte de equipos por liga
 async function generarPDF(req, res){
     const idLiga = req.params.idLiga;
-    var obj = [];
-    await Equipo.find({liga: idLiga}, (err, datos)=>{
+    const equipos = await Equipo.find({liga: idLiga}, (err, datos)=>{
         if(err){
             return res.status(500).send({mensaje: "Error en la petición"})
         }else if(!datos){
-            return res.status(500).send({mensaje: "No se han podido obtener los equipos de liga"})
+            return res.status(500).send({mensaje: "No se han podido obtener los equipos"})
         }else{
-            obj = datos;
+            console.log("Equipos encontrados");
         }
     })
-    pdfGenerador.generarPDF(obj).then(datos => res.download(datos.filename))
+    pdfGenerador.generarPDF(equipos).then(datos => res.download(datos.filename))
 }
 
 //Generar reporte de la tabla liga
