@@ -13,6 +13,13 @@ import { AddTeamComponent } from './components/user/user-myleagues-leaguebyid/ad
 import { GetTableComponent } from './components/user/user-myleagues-leaguebyid/get-table/get-table.component';
 import { LeaguebyidChartComponent } from './components/user/user-myleagues-leaguebyid/leaguebyid-chart/leaguebyid-chart.component';
 import { LeaguebyidJourneyComponent } from './components/user/user-myleagues-leaguebyid/leaguebyid-journey/leaguebyid-journey.component';
+import { AdminLeaguesComponent } from './components/admin/admin-leagues/admin-leagues.component';
+import { AdminLeaguesLeaguebyidComponent } from './components/admin/admin-leagues/admin-leagues-leaguebyid/admin-leagues-leaguebyid.component';
+import { AdminEditLeagueComponent } from './components/admin/admin-leagues/admin-leagues-leaguebyid/admin-edit-league/admin-edit-league.component';
+import { AdminAddTeamComponent } from './components/admin/admin-leagues/admin-leagues-leaguebyid/admin-edit-league/admin-add-team/admin-add-team.component';
+import { AdminChartsComponent } from './components/admin/admin-charts/admin-charts.component';
+import { AdminChartsLeaguebyidComponent } from './components/admin/admin-charts/admin-charts-leaguebyid/admin-charts-leaguebyid.component';
+import { AdminChartsLeaguebyidChartComponent } from './components/admin/admin-charts/admin-charts-leaguebyid/admin-charts-leaguebyid-chart/admin-charts-leaguebyid-chart.component';
 
 
 @NgModule({
@@ -27,7 +34,14 @@ import { LeaguebyidJourneyComponent } from './components/user/user-myleagues-lea
     AddTeamComponent,
     GetTableComponent,
     LeaguebyidChartComponent,
-    LeaguebyidJourneyComponent
+    LeaguebyidJourneyComponent,
+    AdminLeaguesComponent,
+    AdminLeaguesLeaguebyidComponent,
+    AdminEditLeagueComponent,
+    AdminAddTeamComponent,
+    AdminChartsComponent,
+    AdminChartsLeaguebyidComponent,
+    AdminChartsLeaguebyidChartComponent
     ],
   imports: [
     BrowserModule,

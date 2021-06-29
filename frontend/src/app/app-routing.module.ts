@@ -9,6 +9,14 @@ import { UserMyleaguesLeaguebyidComponent } from './components/user/user-myleagu
 import { AddTeamComponent } from './components/user/user-myleagues-leaguebyid/add-team/add-team.component';
 import { GetTableComponent } from './components/user/user-myleagues-leaguebyid/get-table/get-table.component';
 import { LeaguebyidChartComponent } from './components/user/user-myleagues-leaguebyid/leaguebyid-chart/leaguebyid-chart.component';
+import { LeaguebyidJourneyComponent } from './components/user/user-myleagues-leaguebyid/leaguebyid-journey/leaguebyid-journey.component';
+import { AdminLeaguesComponent } from './components/admin/admin-leagues/admin-leagues.component';
+import { AdminLeaguesLeaguebyidComponent } from './components/admin/admin-leagues/admin-leagues-leaguebyid/admin-leagues-leaguebyid.component';
+import { AdminEditLeagueComponent } from './components/admin/admin-leagues/admin-leagues-leaguebyid/admin-edit-league/admin-edit-league.component';
+import { AdminAddTeamComponent } from './components/admin/admin-leagues/admin-leagues-leaguebyid/admin-edit-league/admin-add-team/admin-add-team.component'; 
+import { AdminChartsComponent } from './components/admin/admin-charts/admin-charts.component';
+import { AdminChartsLeaguebyidComponent } from './components/admin/admin-charts/admin-charts-leaguebyid/admin-charts-leaguebyid.component';
+import { AdminChartsLeaguebyidChartComponent } from './components/admin/admin-charts/admin-charts-leaguebyid/admin-charts-leaguebyid-chart/admin-charts-leaguebyid-chart.component';
 
 const routes: Routes = [
   {
@@ -38,6 +46,30 @@ const routes: Routes = [
   },{
     path: "user/my-leagues/league/chart",
     component: LeaguebyidChartComponent
+  },{
+    path: "user/my-leagues/league/journey",
+    component: LeaguebyidJourneyComponent
+  },{
+    path: "admin/leagues",
+    component: AdminLeaguesComponent
+  },{
+    path: "admin/leagues/leagues-by-user-id",
+    component: AdminLeaguesLeaguebyidComponent
+  },{
+    path: "admin/leagues/leagues-by-user-id/edit",
+    component: AdminEditLeagueComponent
+  },{
+    path: "admin/leagues/leagues-by-user-id/edit/add-team",
+    component: AdminAddTeamComponent
+  },{
+    path: "admin/charts",
+    component: AdminChartsComponent
+  },{
+    path: "admin/charts/leaguebyid",
+    component: AdminChartsLeaguebyidComponent
+  },{
+    path: "admin/charts/leaguebyid/chart",
+    component: AdminChartsLeaguebyidChartComponent
   }
 ];
 
