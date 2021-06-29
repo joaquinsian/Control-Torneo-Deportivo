@@ -11,6 +11,9 @@ import { UserMyleaguesComponent } from './components/user/user-myleagues/user-my
 import { UserMyleaguesLeaguebyidComponent } from './components/user/user-myleagues-leaguebyid/user-myleagues-leaguebyid.component';
 import { AddTeamComponent } from './components/user/user-myleagues-leaguebyid/add-team/add-team.component';
 import { GetTableComponent } from './components/user/user-myleagues-leaguebyid/get-table/get-table.component';
+import { LeaguebyidChartComponent } from './components/user/user-myleagues-leaguebyid/leaguebyid-chart/leaguebyid-chart.component';
+import { LeaguebyidJourneyComponent } from './components/user/user-myleagues-leaguebyid/leaguebyid-journey/leaguebyid-journey.component';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +25,9 @@ import { GetTableComponent } from './components/user/user-myleagues-leaguebyid/g
     UserMyleaguesComponent,
     UserMyleaguesLeaguebyidComponent,
     AddTeamComponent,
-    GetTableComponent
+    GetTableComponent,
+    LeaguebyidChartComponent,
+    LeaguebyidJourneyComponent
     ],
   imports: [
     BrowserModule,

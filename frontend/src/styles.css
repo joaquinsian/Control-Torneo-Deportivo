@@ -186,6 +186,10 @@ body {
     text-align: center;
 }
 
+.m-table td {
+    text-align: center;
+}
+
 .m-table tbody tr {
     background-color: white;
 }

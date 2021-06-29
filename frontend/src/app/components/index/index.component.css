@@ -18,3 +18,7 @@
 .option-panel span {
     font-size: 22px;
 }
+
+#charts {
+    grid-column: 1/3;
+}
