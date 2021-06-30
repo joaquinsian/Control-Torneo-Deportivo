@@ -189,12 +189,12 @@ async function generarPDF(req, res) {
     const equipos = await Equipo.find({ liga: idLiga }, (err, datos) => {
         if (err) {
             return res.status(500).send({ mensaje: "Error en la petición" })
-        } else if (!datos) {
-            return res.status(500).send({ mensaje: "No se han podido obtener los equipos" })
+        } else if (datos && datos.length >= 1) {
+            console.log("Equipos Encontrados");
         } else {
-            console.log("Equipos encontrados");
+            return res.status(500).send({ mensaje: "La liga no contiene equipos"})
         }
-    })
+    }).populate("liga")
     pdfGenerador.generarPDF(equipos).then(datos => res.download(datos.filename))
 }
 
@@ -206,10 +206,10 @@ async function generadorTablaLiga(req, res) {
     const tabla = await Tabla.find({ equipo: Equipos }, (err, datos) => {
         if (err) {
             return res.status(500).send({ mensaje: "Error en la petición" })
-        } else if (!datos) {
-            return res.status(500).send({ mensaje: "No se ha podido obtener los equipos de la tabla" })
+        } else if (datos && datos.length >= 1) {
+            console.log("Equipos Encontrados");
         } else {
-            console.log(datos);
+            return res.status(500).send({mensaje: "La liga no contiene equipos"})
         }
     }).populate("equipo").sort({ puntaje: -1 })
     obj = tabla;

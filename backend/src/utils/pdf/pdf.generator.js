@@ -5,6 +5,7 @@ const pdf = require('html-pdf')
 const moment = require('moment');
 let today = moment().format('D MMM, YYYY');
 let content = "";
+let Number = 1;
 const generarBody = (datos) => {
     content += `
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -75,6 +76,7 @@ const generarBody = (datos) => {
     <table class="table table-striped" border="0" cellpadding="0" cellspacing="0" style="font-family: Helvetica, Arial, sans-serif; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0px; border-collapse: collapse; width: 100%; max-width: 100%;">
       <thead>
         <tr>
+          <th scope="col" style="line-height: 24px; font-size: 16px; border-bottom-width: 2px; border-bottom-color: #dee2e6; border-bottom-style: solid; border-top-width: 1px; border-top-color: #dee2e6; border-top-style: solid; margin: 0; padding: 12px;" align="left" valign="top"></th>
           <th scope="col" style="line-height: 24px; font-size: 16px; border-bottom-width: 2px; border-bottom-color: #dee2e6; border-bottom-style: solid; border-top-width: 1px; border-top-color: #dee2e6; border-top-style: solid; margin: 0; padding: 12px;" align="left" valign="top">Equipo</th>
           <th scope="col" style="line-height: 24px; font-size: 16px; border-bottom-width: 2px; border-bottom-color: #dee2e6; border-bottom-style: solid; border-top-width: 1px; border-top-color: #dee2e6; border-top-style: solid; margin: 0; padding: 12px;" align="left" valign="top">Nombre</th>
         </tr>
@@ -84,8 +86,9 @@ const generarBody = (datos) => {
     for (const data of datos) {
         content +=
             `
-       <tr style="" bgcolor="#f2f2f2">
-       <th style="line-height: 24px; font-size: 16px; margin: 0;" align="left"><img style="width: 80px; height: 80px; object-fit: contain;" src="${data.imagen}"></th>
+       <tr style="" bgcolor="#ffffff">
+       <th style="border-spacing: 0px; border-collapse: collapse; line-height: 24px; font-size: 20px; border-top-width: 1px; border-top-color: #dee2e6; border-top-style: solid; margin: 0; padding: 12px;" align="left" valign="top">${Number++}</th>
+       <td style="line-height: 24px; font-size: 16px; margin: 0;" align="left"><img style="width: 70px; height: 70px; object-fit: contain;" src="${data.imagen}"></td>
        <td style="border-spacing: 0px; border-collapse: collapse; line-height: 24px; font-size: 20px; border-top-width: 1px; border-top-color: #dee2e6; border-top-style: solid; margin: 0; padding: 12px;" align="left" valign="top">${data.nombre}</td>
        </tr>
        `
@@ -145,5 +148,6 @@ const generarBody = (datos) => {
 exports.generarPDF = (datos) => {
     content = "";
     generarBody(datos);
-    return pdf.createAsync(content, { filename: `./utils/pdf/Reporte Liga ${today}.pdf` })
+    Number = 1;
+    return pdf.createAsync(content, { filename: `./utils/pdf/Reporte Equipos por Liga ${today}.pdf` })
 }
