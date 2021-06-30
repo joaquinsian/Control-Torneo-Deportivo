@@ -157,5 +157,5 @@ const generarBody = (datos) => {
 exports.generadorTablaLiga = (datos) => {
     content = "";
     generarBody(datos);
-    return pdf.createAsync(content, { filename: `./utils/pdf/tablaLiga_${today}.pdf` })
+    return pdf.createAsync(content, { filename: `./utils/pdf/Reporte Liga ${today}.pdf` })
 }
