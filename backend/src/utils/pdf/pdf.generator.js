@@ -1,6 +1,6 @@
 'use strict';
 const Promise = require('bluebird')
-//const pdf = Promise.promisifyAll(require('html-pdf'));
+    //const pdf = Promise.promisifyAll(require('html-pdf'));
 const pdf = require('html-pdf')
 const moment = require('moment');
 let today = moment().format('D MMM, YYYY');
@@ -81,16 +81,16 @@ const generarBody = (datos) => {
       </thead>
       <tbody>
    `
-   for (const data of datos) {
-       content += 
-       `
+    for (const data of datos) {
+        content +=
+            `
        <tr style="" bgcolor="#f2f2f2">
        <th style="line-height: 24px; font-size: 16px; margin: 0;" align="left"><img style="width: 80px; height: 80px; object-fit: contain;" src="${data.imagen}"></th>
        <td style="border-spacing: 0px; border-collapse: collapse; line-height: 24px; font-size: 20px; border-top-width: 1px; border-top-color: #dee2e6; border-top-style: solid; margin: 0; padding: 12px;" align="left" valign="top">${data.nombre}</td>
        </tr>
        `
-   }
-   content += `
+    }
+    content += `
    </tbody>
    </table>
            </div>
@@ -142,8 +142,8 @@ const generarBody = (datos) => {
    
    `
 }
-exports.generarPDF = (datos)=>{
+exports.generarPDF = (datos) => {
     content = "";
     generarBody(datos);
-    return pdf.createAsync(content, {filename: `/utils/pdf/ligas_${today}.pdf`})
+    return pdf.createAsync(content, { filename: `./utils/pdf/ligas_${today}.pdf` })
 }

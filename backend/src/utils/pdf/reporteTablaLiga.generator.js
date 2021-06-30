@@ -87,11 +87,11 @@ const generarBody = (datos) => {
       </thead>
       <tbody>
    `
-   for (const data of datos) {
-       content += 
-       `
+    for (const data of datos) {
+        content +=
+            `
        <tr style="" bgcolor="#f2f2f2">
-       <th style="line-height: 24px; font-size: 16px; margin: 0;" align="left">${data.equipo}</th>
+       <th style="line-height: 24px; font-size: 16px; margin: 0;" align="left">${data.equipo.nombre}</th>
        <td style="border-spacing: 0px; border-collapse: collapse; line-height: 24px; font-size: 16px; border-top-width: 1px; border-top-color: #dee2e6; border-top-style: solid; margin: 0; padding: 12px;" align="right" valign="top">${data.partidos_jugados}</td>
        <td style="border-spacing: 0px; border-collapse: collapse; line-height: 24px; font-size: 16px; border-top-width: 1px; border-top-color: #dee2e6; border-top-style: solid; margin: 0; padding: 12px;" align="right" valign="top">${data.partidos_ganados}</td>
        <td style="border-spacing: 0px; border-collapse: collapse; line-height: 24px; font-size: 16px; border-top-width: 1px; border-top-color: #dee2e6; border-top-style: solid; margin: 0; padding: 12px;" align="right" valign="top">${data.partidos_empatados}</td>
@@ -101,8 +101,8 @@ const generarBody = (datos) => {
        <td style="border-spacing: 0px; border-collapse: collapse; line-height: 24px; font-size: 16px; border-top-width: 1px; border-top-color: #dee2e6; border-top-style: solid; margin: 0; padding: 12px;" align="right" valign="top">${data.puntaje}</td>
        </tr>
        `
-   }
-   content += `
+    }
+    content += `
    </tbody>
    </table>
            </div>
@@ -154,8 +154,8 @@ const generarBody = (datos) => {
    
    `
 }
-exports.generadorTablaLiga = (datos)=>{
+exports.generadorTablaLiga = (datos) => {
     content = "";
     generarBody(datos);
-    return pdf.createAsync(content, {filename: `/utils/pdf/tablaLiga_${today}.pdf`})
+    return pdf.createAsync(content, { filename: `./utils/pdf/tablaLiga_${today}.pdf` })
 }

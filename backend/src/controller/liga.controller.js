@@ -211,7 +211,7 @@ async function generadorTablaLiga(req, res) {
         } else {
             console.log(datos);
         }
-    }).sort({ puntaje: -1 })
+    }).populate("equipo").sort({ puntaje: -1 })
     obj = tabla;
     pdfTablaLiga.generadorTablaLiga(obj).then(datos => res.download(datos.filename))
 }
