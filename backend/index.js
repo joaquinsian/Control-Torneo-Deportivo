@@ -5,7 +5,7 @@ const app = require("./app")
 const addAdmin = require("./src/controller/AdminApp.controller") 
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/torneodeportivo', {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false}).then(()=>{
+mongoose.connect('mongodb://uxf2ag95mcuwpjafmksq:RfLuFtyR5884QPFpIYRh@bjlqz8dnveitfqk-mongodb.services.clever-cloud.com:27017/bjlqz8dnveitfqk', {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false}).then(()=>{
     console.log("Se encuentra conectado a la base de datos");
 
     createAdminApp();
