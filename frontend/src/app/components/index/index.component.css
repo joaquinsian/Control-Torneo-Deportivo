@@ -29,6 +29,6 @@
 
 #control-panel {
     background-image: url("../../../assets/dist/img/svg_1.png");
-    background-position-y: 0%;
+    background-position-y: 100%;
     background-repeat: no-repeat;
 }
