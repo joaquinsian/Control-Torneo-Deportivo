@@ -22,3 +22,13 @@
 #charts {
     grid-column: 1/3;
 }
+
+#left-container {
+    padding-right: 40px
+}
+
+#control-panel {
+    background-image: url("../../../assets/dist/img/svg_1.png");
+    background-position-y: 0%;
+    background-repeat: no-repeat;
+}

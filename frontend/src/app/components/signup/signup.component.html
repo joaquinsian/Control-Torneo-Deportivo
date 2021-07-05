@@ -6,14 +6,22 @@
         <div class="cont-centered">
             <h2>REGISTRARSE</h2>
         </div>
-        <form method="post">
+        <form (submit)="signUp()" method="post" ngNativeValidate>
+            <div class="form-item-container">
+                <h4>Nombre</h4>
+                <input [(ngModel)]="user.nombre" required="required" class="input-field w-std" type="text" name="nombre" placeholder="Name">
+            </div>
             <div class="form-item-container">
                 <h4>Nombre de Usuario</h4>
-                <input class="input-field w-std" type="text" name="username" placeholder="Username">
+                <input [(ngModel)]="user.usuario" required="required" class="input-field w-std" type="text" name="usuario" placeholder="Username">
+            </div>
+            <div class="form-item-container">
+                <h4>Correo Electrónico</h4>
+                <input [(ngModel)]="user.email" required="required" class="input-field w-std" type="email" name="email" placeholder="example@domain.com">
             </div>
             <div class="form-item-container">
                 <h4>Contraseña</h4>
-                <input class="input-field w-std" type="password" name="password" placeholder="Password">
+                <input [(ngModel)]="user.password" required="required" class="input-field w-std" type="password" name="password" placeholder="Password">
             </div>
             <div class="form-item-container">
                 <input class="btn w-100" type="submit" value="Registrarse">
