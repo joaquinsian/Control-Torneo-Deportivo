@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Title} from "@angular/platform-browser";
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-index',
@@ -8,7 +9,7 @@ import {Title} from "@angular/platform-browser";
 })
 export class IndexComponent implements OnInit {
 
-  constructor(private titleService:Title) {
+  constructor(private titleService:Title, public loginService:LoginService) {
     this.titleService.setTitle("Inicio");
   }
 

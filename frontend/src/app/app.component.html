@@ -4,9 +4,15 @@
             TorneoDeportivo
         </a>
         <div class="f-right">
-            <a class="navbar-option navbar-a" routerLink="/">Inicio</a>
-            <a class="navbar-option navbar-a" routerLink="/signin">Iniciar Sesión</a>
-            <a class="navbar-option navbar-a" routerLink="/signup">Registrarse</a>
+            <ng-container *ngIf="!loginService.loggedIn(); else loggedIn">
+                <a class="navbar-option navbar-a" routerLink="/">Inicio</a>
+                <a class="navbar-option navbar-a" routerLink="/signin">Iniciar Sesión</a>
+                <a class="navbar-option navbar-a" routerLink="/signup">Registrarse</a>
+            </ng-container>
+            <ng-template #loggedIn>
+                <a class="navbar-option navbar-a" routerLink="/">Inicio</a>
+                <a (click)="loginService.logout()" style="cursor: pointer;" class="navbar-option navbar-a">Cerrar Sesión</a>
+            </ng-template>
         </div>
     </div>
     <button class="navbar-option burger-btn"><i class="fal fa-bars"></i></button>

@@ -1,33 +1,61 @@
-<div class="f-centered-container">
-    <div class="m-container div-fc">
-        <div class="cont-centered m-b-20">
-            <h2>ADMINISTRAR</h2>
-        </div>
+<ng-container *ngIf="!loginService.loggedIn(); else loggedIn">
+    <div class="m-container" id="control-panel">
         <div class="grid-2">
-            <a routerLink="admin/leagues" class="m-container shadowed-div option-panel">
+            <div class="f-vertical-centered-container" id="left-container">
                 <div>
-                    <img src="../../../assets/dist/img/sports_soccer_black_24dp.svg" alt="soccer-ball.jpg">
+                    <h2>BIENVENIDO</h2>
+                    <hr>
+                    <p class=" m-b-20 " style="font-size: 20px; margin-top: 10px; ">Este es el proyecto del <b>Grupo #2</b></p>
+                    <h4>Integrantes</h4>
+                    <ul class="m-b-20 ">
+                        <li>Oscar Joaquín Sian Oron - 2019017 (Líder)</li>
+                        <li>Luis Rodrigo Morales Florián - 2019047</li>
+                        <li>Jeffry Alexander Ordoñez Pacheco - 2019042</li>
+                        <li>Jorge Eduardo Morataya Socop - 2019041</li>
+                    </ul>
+                    <p>Para acceder a las funcionalidades del programa puede <a href="/signin">Iniciar Sesión</a> o <a href="/signup">Registrarse</a></p>
+                    <i class="m-t-20 " style="display: block; color: #aaa;">@2021 - IN6BM</i>
                 </div>
-                <div>
-                    <span>Ligas</span>
-                </div>
-            </a>
-            <a routerLink="admin/all-users" class="m-container shadowed-div option-panel">
-                <div>
-                    <img src="../../../assets/dist/img/groups_black_24dp.svg" alt="soccer-ball.jpg">
-                </div>
-                <div>
-                    <span>Usuarios</span>
-                </div>
-            </a>
-            <a routerLink="/admin/charts" id="charts" class="m-container shadowed-div option-panel">
-                <div>
-                    <img src="../../../assets/dist/img/timeline_black_24dp.svg" alt="soccer-ball.jpg">
-                </div>
-                <div>
-                    <span>Estadísticas</span>
-                </div>
-            </a>
+            </div>
+            <div>
+                <img class="w-100" src="https://images.mediotiempo.com/bEPvDt5JYsvySCGAUMZ9AHHU-Tk=/958x596/uploads/media/2020/10/22/lionel-messi-referente-barcelona-cancha.jpg " alt="messi.png ">
+            </div>
         </div>
     </div>
-</div>
+</ng-container>
+
+<ng-template #loggedIn>
+    <div class="f-centered-container ">
+        <div class="m-container div-fc">
+            <div class="cont-centered m-b-20 ">
+                <h2>ADMINISTRAR</h2>
+            </div>
+            <div class="grid-2 ">
+                <a routerLink="admin/leagues" class="m-container shadowed-div option-panel ">
+                    <div>
+                        <img src="../../../assets/dist/img/sports_soccer_black_24dp.svg " alt="soccer-ball.jpg ">
+                    </div>
+                    <div>
+                        <span>Ligas</span>
+                    </div>
+                </a>
+                <a routerLink="admin/all-users" class="m-container shadowed-div option-panel ">
+                    <div>
+                        <img src="../../../assets/dist/img/groups_black_24dp.svg " alt="soccer-ball.jpg ">
+                    </div>
+                    <div>
+                        <span>Usuarios</span>
+                    </div>
+                </a>
+                <a routerLink="/admin/charts" id="charts " class="m-container shadowed-div option-panel ">
+                    <div>
+                        <img src="../../../assets/dist/img/timeline_black_24dp.svg " alt="soccer-ball.jpg ">
+                    </div>
+                    <div>
+                        <span>Estadísticas</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</ng-template>
