@@ -10,6 +10,7 @@
                 <a class="navbar-option navbar-a" routerLink="/signup">Registrarse</a>
             </ng-container>
             <ng-template #loggedIn>
+                <ng-container [ngSwitch]></ng-container>
                 <a class="navbar-option navbar-a" routerLink="/">Inicio</a>
                 <a (click)="loginService.logout()" style="cursor: pointer;" class="navbar-option navbar-a">Cerrar Sesión</a>
             </ng-template>

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Router } from "@angular/router"
 
 @Injectable({
@@ -25,5 +24,11 @@ export class LoginService {
   logout() {
     sessionStorage.removeItem("authorization");
     this.router.navigate(["/"])
+  }
+
+  getIdentity(token:any){
+    const headers = new HttpHeaders();
+    const allheaders = headers.set("authorization", token);
+    return this.http.get<any>(this.URL + "/obtenerIdentidad", {headers: allheaders});;
   }
 }

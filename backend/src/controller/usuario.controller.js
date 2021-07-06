@@ -1,6 +1,7 @@
 'use strict'
 const Usuario = require("../models/usuario.model")
 const bcrypt = require("bcrypt-nodejs");
+const jwt = require("jwt-simple");
 
 //Función de registro
 async function registro(req, res) {
@@ -95,6 +96,11 @@ async function obtenerUsuario(req, res) {
     })
 }
 
+async function obtenerIdentidad(req, res) {
+    let x = jwt.decode(req.headers["authorization"], "Torneo_Deportivo");
+    res.json(x)
+}
+
 async function obtenerTodosLosUsuarios(req, res) {
     await Usuario.find()
         .then(doc => res.status(200).json(doc))
@@ -106,5 +112,6 @@ module.exports = {
     editarRegistro,
     eliminarRegistro,
     obtenerUsuario,
-    obtenerTodosLosUsuarios
+    obtenerTodosLosUsuarios,
+    obtenerIdentidad
 }
