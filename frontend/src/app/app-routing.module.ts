@@ -7,6 +7,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { UserMyleaguesComponent } from './components/user/user-myleagues/user-myleagues.component';
 import { UserMyleaguesLeaguebyidComponent } from './components/user/user-myleagues-leaguebyid/user-myleagues-leaguebyid.component';
 import { UserMyleaguesAddComponent } from './components/user/user-myleagues/user-myleagues-add/user-myleagues-add.component';
+import { UserMyleaguesLeaguesEditTeamComponent } from './components/user/user-myleagues-leaguebyid/user-myleagues-leagues-edit-team/user-myleagues-leagues-edit-team.component';
 import { AddTeamComponent } from './components/user/user-myleagues-leaguebyid/add-team/add-team.component';
 import { GetTableComponent } from './components/user/user-myleagues-leaguebyid/get-table/get-table.component';
 import { LeaguebyidChartComponent } from './components/user/user-myleagues-leaguebyid/leaguebyid-chart/leaguebyid-chart.component';
@@ -37,19 +38,22 @@ const routes: Routes = [
     path: "user/my-leagues",
     component: UserMyleaguesComponent
   },{
-    path: "user/my-leagues/league",
+    path: "user/my-leagues/:idleague",
     component: UserMyleaguesLeaguebyidComponent
   },{
-    path: "user/my-leagues/league/add-team",
+    path: "user/my-leagues/:idleague/add-team",
     component: AddTeamComponent
   },{
-    path: "user/my-leagues/league/get-table",
+    path: "user/my-leagues/:idleague/edit/:idteam",
+    component: UserMyleaguesLeaguesEditTeamComponent
+  },{
+    path: "user/my-leagues/:idleague/get-table",
     component: GetTableComponent
   },{
-    path: "user/my-leagues/league/chart",
+    path: "user/my-leagues/:idleague/chart",
     component: LeaguebyidChartComponent
   },{
-    path: "user/my-leagues/league/journey",
+    path: "user/my-leagues/:idleague/journey",
     component: LeaguebyidJourneyComponent
   },{
     path: "user/my-leagues/add",

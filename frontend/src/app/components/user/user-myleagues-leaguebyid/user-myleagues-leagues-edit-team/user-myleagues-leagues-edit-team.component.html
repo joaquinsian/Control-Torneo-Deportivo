@@ -1,0 +1,23 @@
+<div class="f-centered-container">
+    <div class="m-container div-fc">
+        <div class="cont-centered m-b-20">
+            <i class="fas fa-users user-circle-regular"></i>
+        </div>
+        <div class="cont-centered">
+            <h2>EDITAR EQUIPO</h2>
+        </div>
+        <form (submit)="editTeam()" method="post" ngNativeValidate>
+            <div class="form-item-container">
+                <h4>Nombre de equipo</h4>
+                <input [(ngModel)]="team.nombre" class="input-field w-std" type="text" name="nombre" placeholder="Team Name">
+            </div>
+            <div class="form-item-container">
+                <h4>Imagen (Url)</h4>
+                <input [(ngModel)]="team.imagen" class="input-field w-std" type="text" name="imagen" placeholder="http://domain.com/image.png">
+            </div>
+            <div class="form-item-container">
+                <input class="btn w-100" type="submit" value="Editar Equipo">
+            </div>
+        </form>
+    </div>
+</div>

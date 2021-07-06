@@ -25,6 +25,10 @@ export class LeagueService {
     return this.http.get<any>(this.URL + "/mostrarLigaID/" + idleague);
   }
 
+  getTeamsByLeagueId(idleague: any){
+    return this.http.get<any>(this.URL + "/equiposLiga/" + idleague);
+  }
+
   editLeague(idleague: any, league: any) {
     return this.http.put<any>(this.URL + "/editarLiga/" + idleague, league);
   }

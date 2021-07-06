@@ -2,14 +2,11 @@
     <h2 class="m-b-20">MIS LIGAS</h2>
     <button routerLink="/user/my-leagues/add" class="btn m-b-20 add-btn"><i class="fas fa-plus"></i> Agregar Liga</button>
     <div class="grid-4">
-        <ng-container *ngIf="league.length === 0">
-            <h2>Aún no hay ligas :(</h2>
-        </ng-container>
         <div *ngFor="let x of league" style="position: relative" class="m-container shadowed-div cont-centered f-centered-container">
             <div>
                 <img style="width: 95%" class="m-b-20" src={{x.image}} alt="logo-img">
                 <h5 class="m-b-20 m-h5">{{x.nombre}}</h5>
-                <a routerLink="/user/my-leagues/league" class="btn a-formatted">Ver Liga &raquo;</a>
+                <a routerLink="/user/my-leagues/{{x._id}}" class="btn a-formatted">Ver Liga &raquo;</a>
                 <div class="delete-edit-buttons-container">
                     <button routerLink="/user/my-leagues/edit/{{x._id}}" class="delete-edit-button edit-button-1"><i class="fas fa-pencil-alt"></i></button>
                     <button (click)="deleteLeague(x._id)" class="delete-edit-button delete-button-1"><i class="fas fa-times"></i></button>
@@ -17,4 +14,10 @@
             </div>
         </div>
     </div>
+    <ng-container *ngIf="league.length === 0">
+        <div class="cont-centered">
+            <img class="m-b-40" id="sad-face" src="https://img.icons8.com/ios/452/sad.png" alt="sad-face.png">
+            <h1>Aún no hay ligas :(</h1>
+        </div>
+    </ng-container>
 </div>

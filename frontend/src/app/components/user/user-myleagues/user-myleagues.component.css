@@ -1,0 +1,9 @@
+#sad-face {
+    width: 300px;
+}
+
+@media (max-width: 589px) {
+    #sad-face {
+        width: 100%;
+    }
+}

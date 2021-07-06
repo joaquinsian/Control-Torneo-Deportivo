@@ -31,8 +31,6 @@ export class IndexComponent implements OnInit {
           console.error(err)
         }
       )
-    } else {
-      console.log("No esta logueado")
     }
   }
 }

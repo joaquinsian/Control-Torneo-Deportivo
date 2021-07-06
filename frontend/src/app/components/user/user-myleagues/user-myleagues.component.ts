@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class UserMyleaguesComponent implements OnInit {
   league = [{
     _id: String,
-    nombre: String,
+    nombre: "Cargando...",
     image: ""
   }]
 
@@ -30,7 +30,6 @@ export class UserMyleaguesComponent implements OnInit {
         this.leagueService.getLeagueByUserId(sessionStorage.getItem("authorization"),res.sub).subscribe(
           res2 => {
             this.league = res2;
-            console.log(this.league)
           },
           err2 => {
             console.error(err2);
