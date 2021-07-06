@@ -22,6 +22,8 @@ import { AdminAddTeamComponent } from './components/admin/admin-leagues/admin-le
 import { AdminChartsComponent } from './components/admin/admin-charts/admin-charts.component';
 import { AdminChartsLeaguebyidComponent } from './components/admin/admin-charts/admin-charts-leaguebyid/admin-charts-leaguebyid.component';
 import { AdminChartsLeaguebyidChartComponent } from './components/admin/admin-charts/admin-charts-leaguebyid/admin-charts-leaguebyid-chart/admin-charts-leaguebyid-chart.component';
+import { UserMyleaguesAddComponent } from './components/user/user-myleagues/user-myleagues-add/user-myleagues-add.component';
+import { UserMyleaguesEditComponent } from './components/user/user-myleagues/user-myleagues-edit/user-myleagues-edit.component';
 
 
 
@@ -44,7 +46,9 @@ import { AdminChartsLeaguebyidChartComponent } from './components/admin/admin-ch
     AdminAddTeamComponent,
     AdminChartsComponent,
     AdminChartsLeaguebyidComponent,
-    AdminChartsLeaguebyidChartComponent
+    AdminChartsLeaguebyidChartComponent,
+    UserMyleaguesAddComponent,
+    UserMyleaguesEditComponent
     ],
   imports: [
     BrowserModule,

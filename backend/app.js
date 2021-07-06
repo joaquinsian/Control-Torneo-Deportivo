@@ -4,6 +4,7 @@
  const app = express();
  const bodyParser = require("body-parser");
  const cors = require("cors")
+ const morgan = require("morgan")
 
  //Cabeceras
  app.use(cors());
@@ -20,6 +21,7 @@
  //Middlewares
  app.use(bodyParser.urlencoded({ extended: false }));
  app.use(bodyParser.json());
+ app.use(morgan("dev"));
 
  app.use('/torneodeportivo', AdminApp_rutas)
  app.use('/torneodeportivo', Usuario_rutas)

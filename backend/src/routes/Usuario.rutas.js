@@ -9,6 +9,7 @@ api.post('/registro', usuarioController.registro);
 api.put('/editarRegistro/:idUsuario', md_autentication.ensureAuth, usuarioController.editarRegistro)
 api.delete('/eliminarRegistro/:idUsuario', md_autentication.ensureAuth, usuarioController.eliminarRegistro)
 api.get('/obtenerUsuario/:idUsuario', usuarioController.obtenerUsuario);
-api.get("/obtenerUsuarios", usuarioController.obtenerTodosLosUsuarios)
+api.get("/obtenerUsuarios", usuarioController.obtenerTodosLosUsuarios);
+api.get("/obtenerIdentidad", usuarioController.obtenerIdentidad);
 
 module.exports = api;

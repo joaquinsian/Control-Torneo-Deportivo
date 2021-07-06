@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoginService } from './services/login.service';
 
 @Component({
@@ -7,9 +7,27 @@ import { LoginService } from './services/login.service';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'frontend';
 
+  role = "";
   constructor(public loginService:LoginService){
+  }
+
+  ngOnInit(): void {
+    this.getRole();
+  }
+
+  getRole(){
+    if(sessionStorage.getItem("authorization")){
+      this.loginService.getIdentity(sessionStorage.getItem("authorization")).subscribe(
+        res => {
+          this.role = res.rol;
+        },
+        err => {
+          console.error(err)
+        }
+      )
+    }
   }
 }

@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
   signUp() {
     this.loginService.signUp(this.user).subscribe(
       res => {
-        Swal.fire('Registro exitoso', 'El usuario ha sido registrado exitosamente', 'success')
+        Swal.fire('Registro exitoso', 'Ya puede iniciar sesión con ese usuario', 'success')
       },
       err => {
         switch (err.error.mensaje) {
