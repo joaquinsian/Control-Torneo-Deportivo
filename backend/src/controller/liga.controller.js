@@ -57,21 +57,21 @@ async function mostrarLigas(req, res) {
 
 //Mostrar ligas por el id de usuario
 async function ligasForUser(req, res) {
-    if (req.user.rol === "Admin_App") {
-        var idUsuario = req.params.idUsuario;
+    // if (req.user.rol === "Admin_App") {
+    var idUsuario = req.params.idUsuario;
 
-        await Liga.find({ creador: idUsuario }).populate('creador', 'nombre email').exec((err, ligasUser) => {
+    await Liga.find({ creador: idUsuario }).populate('creador', 'nombre email').exec((err, ligasUser) => {
             if (err) {
                 return res.status(500).send({ mensaje: "Error en la petición" })
             } else if (!ligasUser) {
                 return res.status(500).send({ mensaje: "No se han podido obtener las ligas" })
             } else {
-                return res.status(200).send({ ligasUser })
+                return res.status(200).send(ligasUser)
             }
         })
-    } else {
-        return res.status(500).send({ mensaje: "No tiene el rol de autirización" })
-    }
+        //} else {
+        //return res.status(500).send({ mensaje: "No tiene el rol de autorización" })
+        //}
 }
 
 //Mostrar mis ligas (del usuario que este logeado)
@@ -192,7 +192,7 @@ async function generarPDF(req, res) {
         } else if (datos && datos.length >= 1) {
             console.log("Equipos Encontrados");
         } else {
-            return res.status(500).send({ mensaje: "La liga no contiene equipos"})
+            return res.status(500).send({ mensaje: "La liga no contiene equipos" })
         }
     }).populate("liga")
     pdfGenerador.generarPDF(equipos).then(datos => res.download(datos.filename))
@@ -209,7 +209,7 @@ async function generadorTablaLiga(req, res) {
         } else if (datos && datos.length >= 1) {
             console.log("Equipos Encontrados");
         } else {
-            return res.status(500).send({mensaje: "La liga no contiene equipos"})
+            return res.status(500).send({ mensaje: "La liga no contiene equipos" })
         }
     }).populate("equipo").sort({ puntaje: -1 })
     obj = tabla;

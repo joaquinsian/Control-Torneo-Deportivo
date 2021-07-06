@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Title} from "@angular/platform-browser";
 import { LoginService } from 'src/app/services/login.service';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-index',
@@ -8,14 +9,14 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
-
   role = "";
   username = "";
-  constructor(private titleService:Title, public loginService:LoginService) {
+  constructor(private titleService:Title, public loginService:LoginService,private appcomponent:AppComponent) {
     this.titleService.setTitle("Inicio");
   }
 
   ngOnInit(): void {
+    this.appcomponent.ngOnInit();
     this.getRole();
   }
 

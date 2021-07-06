@@ -6,6 +6,7 @@ import { SigninComponent } from "./components/signin/signin.component";
 import { SignupComponent } from './components/signup/signup.component';
 import { UserMyleaguesComponent } from './components/user/user-myleagues/user-myleagues.component';
 import { UserMyleaguesLeaguebyidComponent } from './components/user/user-myleagues-leaguebyid/user-myleagues-leaguebyid.component';
+import { UserMyleaguesAddComponent } from './components/user/user-myleagues/user-myleagues-add/user-myleagues-add.component';
 import { AddTeamComponent } from './components/user/user-myleagues-leaguebyid/add-team/add-team.component';
 import { GetTableComponent } from './components/user/user-myleagues-leaguebyid/get-table/get-table.component';
 import { LeaguebyidChartComponent } from './components/user/user-myleagues-leaguebyid/leaguebyid-chart/leaguebyid-chart.component';
@@ -17,6 +18,7 @@ import { AdminAddTeamComponent } from './components/admin/admin-leagues/admin-le
 import { AdminChartsComponent } from './components/admin/admin-charts/admin-charts.component';
 import { AdminChartsLeaguebyidComponent } from './components/admin/admin-charts/admin-charts-leaguebyid/admin-charts-leaguebyid.component';
 import { AdminChartsLeaguebyidChartComponent } from './components/admin/admin-charts/admin-charts-leaguebyid/admin-charts-leaguebyid-chart/admin-charts-leaguebyid-chart.component';
+import { UserMyleaguesEditComponent } from './components/user/user-myleagues/user-myleagues-edit/user-myleagues-edit.component';
 
 const routes: Routes = [
   {
@@ -49,6 +51,12 @@ const routes: Routes = [
   },{
     path: "user/my-leagues/league/journey",
     component: LeaguebyidJourneyComponent
+  },{
+    path: "user/my-leagues/add",
+    component: UserMyleaguesAddComponent
+  },{
+    path: "user/my-leagues/edit/:id",
+    component: UserMyleaguesEditComponent 
   },{
     path: "admin/leagues",
     component: AdminLeaguesComponent
