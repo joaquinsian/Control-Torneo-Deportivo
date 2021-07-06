@@ -32,3 +32,9 @@
     background-position-y: 100%;
     background-repeat: no-repeat;
 }
+
+@media screen and (max-width: 1135px) {
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+}

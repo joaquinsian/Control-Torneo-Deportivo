@@ -22,7 +22,7 @@ export class AppComponent implements OnInit{
     if(sessionStorage.getItem("authorization")){
       this.loginService.getIdentity(sessionStorage.getItem("authorization")).subscribe(
         res => {
-          console.log(res)
+          this.role = res.rol;
         },
         err => {
           console.error(err)

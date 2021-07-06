@@ -9,11 +9,29 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class IndexComponent implements OnInit {
 
+  role = "";
+  username = "";
   constructor(private titleService:Title, public loginService:LoginService) {
     this.titleService.setTitle("Inicio");
   }
 
   ngOnInit(): void {
+    this.getRole();
   }
 
+  getRole(){
+    if(sessionStorage.getItem("authorization")){
+      this.loginService.getIdentity(sessionStorage.getItem("authorization")).subscribe(
+        res => {
+          this.role = res.rol;
+          this.username = res.nombre;
+        },
+        err => {
+          console.error(err)
+        }
+      )
+    } else {
+      console.log("No esta logueado")
+    }
+  }
 }
