@@ -17,6 +17,7 @@
  const Equipo_rutas = require('./src/routes/Equipo.rutas')
  const Tabla_rutas = require('./src/routes/tabla.rutas')
  const Partidos_rutas = require('./src/routes/partidos.rutas')
+ const Resultado_Partido_rutas = require('./src/routes/Resultado_Partido.rutas')
 
  //Middlewares
  app.use(bodyParser.urlencoded({ extended: false }));
@@ -30,6 +31,7 @@
  app.use('/torneodeportivo', Equipo_rutas)
  app.use('/torneodeportivo', Tabla_rutas)
  app.use('/torneodeportivo', Partidos_rutas)
+ app.use('/torneodeportivo', Resultado_Partido_rutas)
 
  //Exportar 
  module.exports = app;
