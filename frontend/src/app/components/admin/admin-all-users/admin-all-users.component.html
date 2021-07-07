@@ -1,5 +1,6 @@
 <div class="m-container w-100">
     <h2 class="m-b-20">TODOS LOS USUARIOS</h2>
+    <p class="m-b-20" style="font-size: 18px">Para agregar un nuevo usuario, <b>Cierre Sesión</b> y luego <b>Registre</b> uno nuevo</p>
     <table class="table-standard m-table">
         <thead>
             <tr>
@@ -13,70 +14,29 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Lorem</td>
-                <td>lorem123</td>
-                <td>lorem@ipsum.com</td>
-                <td>Administrador</td>
-                <td>
-                    <a href="#">Editar</a>
-                </td>
-                <td>
-                    <a style="color: #e74c3c" href="#">Eliminar</a>
-                </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Lorem</td>
-                <td>lorem123</td>
-                <td>lorem@ipsum.com</td>
-                <td>Administrador</td>
-                <td>
-                    <a href="#">Editar</a>
-                </td>
-                <td>
-                    <a style="color: #e74c3c" href="#">Eliminar</a>
-                </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Lorem</td>
-                <td>lorem123</td>
-                <td>lorem@ipsum.com</td>
-                <td>Administrador</td>
-                <td>
-                    <a href="#">Editar</a>
-                </td>
-                <td>
-                    <a style="color: #e74c3c" href="#">Eliminar</a>
-                </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Lorem</td>
-                <td>lorem123</td>
-                <td>lorem@ipsum.com</td>
-                <td>Administrador</td>
-                <td>
-                    <a href="#">Editar</a>
-                </td>
-                <td>
-                    <a style="color: #e74c3c" href="#">Eliminar</a>
-                </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Lorem</td>
-                <td>lorem123</td>
-                <td>lorem@ipsum.com</td>
-                <td>Administrador</td>
-                <td>
-                    <a href="#">Editar</a>
-                </td>
-                <td>
-                    <a style="color: #e74c3c" href="#">Eliminar</a>
-                </td>
+            <tr *ngFor="let x of users; let i = index" [attr.data-index]="i">
+                <td>{{i+1}}</td>
+                <td>{{x.nombre}}</td>
+                <td>{{x.usuario}}</td>
+                <td>{{x.email}}</td>
+                <td>{{x.rol}}</td>
+                <ng-container *ngIf="x.rol === 'Admin_App'; else clientoptions">
+                    <td>
+                        <span style="text-decoration:line-through; color: #aaa">Editar</span>
+                    </td>
+                    <td>
+                        <span style="text-decoration:line-through; color: #aaa">Eliminar</span>
+                    </td>
+                </ng-container>
+
+                <ng-template #clientoptions>
+                    <td>
+                        <a routerLink="/admin/all-users/edit/{{x._id}}">Editar</a>
+                    </td>
+                    <td>
+                        <a style="color: #e74c3c; cursor: pointer; text-decoration: underline;" (click)="deleteUser(x._id)">Eliminar</a>
+                    </td>
+                </ng-template>
             </tr>
         </tbody>
     </table>

@@ -29,6 +29,10 @@ async function obtenerTabla(req, res) {
     })
 }
 
+async function obtenerTablaPorIDLiga(req, res) {
+
+}
+
 //Función para editar la tabla por id de equipo
 async function editarTabla(req, res) {
     var idEquipo = req.params.idEquipo;
@@ -66,6 +70,7 @@ async function editarTablaId(req, res) {
 module.exports = {
     tablaCompleta,
     obtenerTabla,
+    obtenerTablaPorIDLiga,
     editarTabla,
     editarTablaId
 }

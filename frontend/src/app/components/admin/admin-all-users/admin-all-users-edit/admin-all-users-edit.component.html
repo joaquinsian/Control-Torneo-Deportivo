@@ -1,0 +1,30 @@
+<div class="f-centered-container">
+    <div class="m-container div-fc">
+        <div class="cont-centered m-b-20">
+            <img class="user-circle-regular" src="../../../assets/dist/img/user-circle-regular.svg">
+        </div>
+        <div class="cont-centered">
+            <h2>EDITAR USUARIO</h2>
+        </div>
+        <div class="form-item-container">
+            <button (click)="upgradeUser()" class="btn" type="button">Convertir en admin</button>
+        </div>
+        <form (submit)="editUser()" method="post" ngNativeValidate>
+            <div class="form-item-container">
+                <h4>Nombre</h4>
+                <input [(ngModel)]="user.nombre" required="required" class="input-field w-std" type="text" name="nombre" placeholder="Name">
+            </div>
+            <div class="form-item-container">
+                <h4>Nombre de Usuario</h4>
+                <input [(ngModel)]="user.usuario" required="required" class="input-field w-std" type="text" name="usuario" placeholder="Username">
+            </div>
+            <div class="form-item-container">
+                <h4>Correo Electrónico</h4>
+                <input [(ngModel)]="user.email" required="required" class="input-field w-std" type="email" name="email" placeholder="example@domain.com">
+            </div>
+            <div class="form-item-container">
+                <input class="btn w-100" type="submit" value="Editar Usuario">
+            </div>
+        </form>
+    </div>
+</div>

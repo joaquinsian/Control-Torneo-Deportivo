@@ -291,6 +291,8 @@ body {
     }
 }
 
+.fdgdg {}
+
 @media screen and (max-width: 630px) {
     .navbar-option.navbar-a,
     .navbar .f-right {

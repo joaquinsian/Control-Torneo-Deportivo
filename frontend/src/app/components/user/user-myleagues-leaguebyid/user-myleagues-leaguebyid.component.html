@@ -7,7 +7,7 @@
             <h1 class="m-b-20 title-league m-t-20">{{league.nombre}}</h1>
             <div class="grid-2">
                 <button (click)="addTeam()" class="btn add-btn"><i class="fas fa-plus-circle"></i> Agregar Equipo</button>
-                <button routerLink="/user/my-leagues/league/get-table" class="btn purple-button"><i class="fas fa-table"></i> Ver Tabla</button>
+                <button routerLink="/user/my-leagues/{{league._id}}/get-table" class="btn purple-button"><i class="fas fa-table"></i> Ver Tabla</button>
                 <button class="btn yellow-button "><i class="fas fa-chart-pie"></i> Gráfica</button>
                 <button class="btn turquoise-button"><i class="fas fa-calendar-alt"></i> Jornadas</button>
             </div>

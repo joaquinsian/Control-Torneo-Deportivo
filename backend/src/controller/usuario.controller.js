@@ -64,6 +64,31 @@ async function editarRegistro(req, res) {
     }
 }
 
+async function editarUsuarioAdmin(req, res) {
+    var idUsuario = req.params.idUsuario;
+    await Usuario.findByIdAndUpdate(idUsuario, req.body, { new: true }, (err, usuarioEditado) => {
+        if (err) {
+            return res.status(500).send({ mensaje: "Error en la petición" })
+        } else if (!usuarioEditado) {
+            return res.status(500).send({ mensaje: "No se ha podido editar el registro" })
+        } else {
+            return res.status(200).send({ usuarioEditado })
+        }
+    })
+}
+
+async function convertirAdmin(req, res) {
+    var iduser = req.params.idUsuario;
+    var founduser = await Usuario.findOne({ _id: iduser });
+    if (founduser.rol === "Admin_App") {
+        return res.status(400).json({ error: "User is already an admin" })
+    }
+
+    await Usuario.findByIdAndUpdate(iduser, { rol: "Admin_App" })
+        .then(doc => res.status(200).json(doc))
+        .catch(err => console.error(err));
+}
+
 //Función para eliminar el usuario
 async function eliminarRegistro(req, res) {
     var idUsuario = req.params.idUsuario;
@@ -80,6 +105,13 @@ async function eliminarRegistro(req, res) {
             }
         })
     }
+}
+
+async function eliminarUsuario(req, res) {
+    var idUsuario = req.params.idUsuario;
+    await Usuario.findByIdAndDelete(idUsuario)
+        .then(doc => res.status(200).json(doc))
+        .catch(err => console.error(err))
 }
 
 //Función para obtener un usuario por id
@@ -102,7 +134,7 @@ async function obtenerIdentidad(req, res) {
 }
 
 async function obtenerTodosLosUsuarios(req, res) {
-    await Usuario.find()
+    await Usuario.find().sort({ rol: 1 })
         .then(doc => res.status(200).json(doc))
         .catch(err => console.error(err));
 }
@@ -110,8 +142,11 @@ async function obtenerTodosLosUsuarios(req, res) {
 module.exports = {
     registro,
     editarRegistro,
+    editarUsuarioAdmin,
     eliminarRegistro,
+    eliminarUsuario,
     obtenerUsuario,
     obtenerTodosLosUsuarios,
-    obtenerIdentidad
+    obtenerIdentidad,
+    convertirAdmin
 }
