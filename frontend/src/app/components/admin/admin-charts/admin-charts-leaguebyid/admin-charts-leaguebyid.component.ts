@@ -14,7 +14,7 @@ export class AdminChartsLeaguebyidComponent implements OnInit {
   iduser = "";
   user = {
     _id: "",
-    nombre: String
+    nombre: "Cargando"
   };
 
   leagues = []
@@ -34,6 +34,7 @@ export class AdminChartsLeaguebyidComponent implements OnInit {
       this.iduser = params['iduser'];
     });
     this.getUser();
+    this.getLeagues();
   }
 
   getUser(): void {
@@ -49,7 +50,14 @@ export class AdminChartsLeaguebyidComponent implements OnInit {
   }
 
   getLeagues() {
-
+    this.leagueService.getLeagueByUserId(sessionStorage.getItem("authorization"),this.iduser).subscribe(
+      res => {
+        this.leagues = res;
+      },
+      err => {
+        console.error(err);
+      }
+    )
   }
 
 }
