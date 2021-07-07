@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LeagueService } from 'src/app/services/league/league.service';
+import { TeamService } from 'src/app/services/team/team.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-myleagues-leaguebyid',
@@ -19,13 +21,19 @@ export class UserMyleaguesLeaguebyidComponent implements OnInit {
 
   league = {
     _id: String,
-    nombre:"Cargando...",
+    nombre: "Cargando...",
     image: ""
   }
 
   paramsSubscription: Subscription = new Subscription;
 
-  constructor(private titleService: Title, private route: ActivatedRoute, private leagueService: LeagueService) {
+  constructor(
+    private titleService: Title,
+    private route: ActivatedRoute,
+    private leagueService: LeagueService,
+    private teamService: TeamService,
+    private router: Router
+  ) {
     this.titleService.setTitle("Equipos de liga");
   }
 
@@ -36,6 +44,19 @@ export class UserMyleaguesLeaguebyidComponent implements OnInit {
 
     this.getMyLeagueData(this.idleague);
     this.getMyTeams(this.idleague);
+  }
+
+
+  addTeam() {
+    if (this.teams.length >= 10) {
+      Swal.fire(
+        'Error: Muchos equipos',
+        'Solo se pueden tener hasta 10 equipos',
+        'error'
+      )
+    } else {
+      this.router.navigate(["/user/my-leagues/" + this.idleague + "/add-team"]);
+    }
   }
 
   getMyLeagueData(_idleague: String) {
@@ -53,12 +74,39 @@ export class UserMyleaguesLeaguebyidComponent implements OnInit {
     this.leagueService.getTeamsByLeagueId(_idleague).subscribe(
       res => {
         this.teams = res.equipos;
-        console.log(res);
       },
       err => {
         console.error(err);
       }
     )
+  }
+
+  deleteTeam(idteam: any) {
+    Swal.fire({
+      title: '¿Está seguro de eliminar el equipo?',
+      text: 'Sus registros también se eliminarán',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.teamService.deleteTeam(idteam).subscribe(
+          res => {
+            this.getMyTeams(this.idleague);
+            Swal.fire(
+              'Equipo eliminado',
+              'El equipo ha sido eliminado exitosamente',
+              'success'
+            )
+          },
+          err => {
+            console.error(err);
+
+          }
+        )
+      }
+    })
   }
 
 }

@@ -34,13 +34,14 @@ export class UserMyleaguesLeaguesEditTeamComponent implements OnInit {
       this.idteam = params['idteam'];
       console.log(this.idteam)
     });
-    this.getAllData(this.idteam)
+    this.getAllData(this.idteam);
   }
 
   getAllData(newid: any) {
     this.teamService.getTeamById(newid).subscribe(
       res => {
-        this.team = res.equipo;
+        this.team.nombre = res.equipo.nombre;
+        this.team.imagen = res.equipo.imagen;
       },
       err => {
         console.error(err)
@@ -49,6 +50,13 @@ export class UserMyleaguesLeaguesEditTeamComponent implements OnInit {
   }
 
   editTeam(){
-    Swal.fire('Equipo editado', 'El equipo ha sido editado con éxito', 'success');
+    this.teamService.editTeam(this.idteam,this.team).subscribe(
+      res => {
+        Swal.fire('Equipo editado', 'El equipo ha sido editado con éxito', 'success');
+      },
+      err => {
+        console.error(err);
+      }
+    );
   }
 }

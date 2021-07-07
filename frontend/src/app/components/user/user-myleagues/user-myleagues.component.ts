@@ -56,7 +56,7 @@ export class UserMyleaguesComponent implements OnInit {
           res =>{
             Swal.fire(
               'Liga eliminada',
-              'La liga ha sido eliminada exitosa',
+              'La liga ha sido eliminada exitosamente',
               'success'
             )
 

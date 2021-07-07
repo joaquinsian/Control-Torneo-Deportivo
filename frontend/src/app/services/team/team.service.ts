@@ -10,7 +10,19 @@ export class TeamService {
 
   constructor(private http: HttpClient) { }
 
-  getTeamById(idteam: any){
+  getTeamById(idteam: any) {
     return this.http.get<any>(this.URL + "/equipoId/" + idteam);
+  }
+
+  addTeam(team:any){
+    return this.http.post<any>(this.URL + "/crearEquipo",team);
+  }
+
+  editTeam(idteam: any, team: any) {
+    return this.http.put<any>(this.URL + "/editarEquipo/" + idteam,team);
+  }
+
+  deleteTeam(idteam: any){
+    return this.http.delete<any>(this.URL + "/eliminarEquipo/" + idteam);
   }
 }
