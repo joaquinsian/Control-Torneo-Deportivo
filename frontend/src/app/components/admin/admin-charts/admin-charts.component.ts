@@ -11,7 +11,7 @@ export class AdminChartsComponent implements OnInit {
 
   users = [];
 
-  constructor(private titleService:Title,private userService:UserService) {
+  constructor(private titleService: Title, private userService: UserService) {
     this.titleService.setTitle("Todos los usuarios");
   }
 
@@ -19,7 +19,7 @@ export class AdminChartsComponent implements OnInit {
     this.getAllUsers();
   }
 
-  getAllUsers(){
+  getAllUsers() {
     this.userService.getAllClients().subscribe(
       res => {
         this.users = res;
