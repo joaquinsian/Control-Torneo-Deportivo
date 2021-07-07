@@ -1,17 +1,13 @@
 const Equipo = require('../models/equipo.model')
 const Partidos = require('../models/partidos.model');
-var mongoose = require('mongoose');
+const Resultado_Partido = require("../models/resultado_partido.model")
 
 //Función para generar los partidos
 async function generarPartidos(req, res) {
-    var partidosModel = new Partidos();
     var idLiga = req.params.idLiga;
-    // var Equipos = await Equipo.find({ liga: idLiga })
+    var modelResultado = new Resultado_Partido();
+    listadeequipos = await Equipo.find({ liga: idLiga })
     var arrayjornadas = [];
-    var listadeequipos = [mongoose.Types.ObjectId(),
-        mongoose.Types.ObjectId(), mongoose.Types.ObjectId(),
-        mongoose.Types.ObjectId(), mongoose.Types.ObjectId()
-    ];
     var resultados = [];
 
     var count = 1;
@@ -28,33 +24,15 @@ async function generarPartidos(req, res) {
     console.log(arrayjornadas)
     for (let x = 0; x < arrayjornadas.length; x++) {
         let partidos = new Partidos(arrayjornadas[x]);
-        resultados.push(await partidos.save());
+        resultados.push(await partidos.save(),
+        modelResultado.partido = partidos._id,
+        modelResultado.marcador_equipo_local = 0,
+        modelResultado.marcador_equipo_visitante = 0,
+        modelResultado.save()
+        );
     }
 
     res.json(resultados);
-
-    /* if (Equipos && Equipos.length >= 2) {
-        for (let x = 0; x < Equipos.length; x++) {
-            for (let y = 0; y < x; y++) {
-                if (x !== y) {
-                    partidosModel.jornada = jornadas.push([Equipos[x], Equipos[y]]);
-                    console.log("***************************************");
-                    partidosModel.save((err, partidos) => {
-                        if (err) {
-                            console.log("Hubo error");
-                            console.log(err)
-                        } else if (!partidos) {
-                            console.log(partidos);
-                        } else {
-                            console.log("Guardado");
-                        }
-                    })
-                }
-            }
-        }
-    } else {
-        return res.status(500).send({ mensaje: "La liga no contiene los equipos suficientes para generar los partidos" })
-    } */
 }
 
 module.exports = {
