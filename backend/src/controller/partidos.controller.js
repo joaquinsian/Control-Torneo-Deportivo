@@ -26,15 +26,39 @@ async function generarPartidos(req, res) {
         let partidos = new Partidos(arrayjornadas[x]);
         resultados.push(await partidos.save(),
         modelResultado.partido = partidos._id,
-        modelResultado.marcador_equipo_local = 0,
-        modelResultado.marcador_equipo_visitante = 0,
-        modelResultado.save()
+        modelResultado.marcador_equipo_local = null,
+        modelResultado.marcador_equipo_visitante = null,
+        modelResultado.save((err, resultado)=>{
+            if(err){
+                return res.status(500).send({ mensaje: "Error en la petición"})
+            }else if(!resultado){
+                return res.status(500).send({ mensaje: "No se ha podido almacenar el resultado"})
+            }else{
+                console.log("Resultado almacenado");
+            }
+        })
         );
     }
 
     res.json(resultados);
 }
 
+//Función para obtener los partidos
+async function obtenerPartidos(req, res){
+    var idLiga = req.params.idLiga;
+    var Equipos = await Equipo.find({liga: idLiga})
+    await Partidos.find({equipo_local: Equipos}, {equipo_visitante: Equipos}).populate('equipo_local equipo_visitante', 'nombre imagen liga').exec((err, partidos)=>{
+        if(err){
+            return res.status(500).send({mensaje: "Error en la petición"})
+        }else if(!partidos){
+            return res.status(500).send({ mensaje: "No se han podido obtener los partidos"})
+        }else{
+            return res.status(200).send({partidos})
+        }
+    })
+}
+
 module.exports = {
-    generarPartidos
+    generarPartidos,
+    obtenerPartidos
 }
