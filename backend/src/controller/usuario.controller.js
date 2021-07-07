@@ -139,6 +139,12 @@ async function obtenerTodosLosUsuarios(req, res) {
         .catch(err => console.error(err));
 }
 
+async function obtenerTodosLosUsuariosClientes(req, res) {
+    await Usuario.find({ rol: "Rol_Cliente" })
+        .then(doc => res.status(200).json(doc))
+        .catch(err => console.error(err));
+}
+
 module.exports = {
     registro,
     editarRegistro,
@@ -146,6 +152,7 @@ module.exports = {
     eliminarRegistro,
     eliminarUsuario,
     obtenerUsuario,
+    obtenerTodosLosUsuariosClientes,
     obtenerTodosLosUsuarios,
     obtenerIdentidad,
     convertirAdmin

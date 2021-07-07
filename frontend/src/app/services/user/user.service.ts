@@ -13,6 +13,10 @@ export class UserService {
     return this.http.get<any>(this.URL + "/obtenerUsuarios");
   }
 
+  getAllClients(){
+    return this.http.get<any>(this.URL + "/obtenerUsuariosClientes");
+  }
+
   getUserById(iduser: any) {
     return this.http.get<any>(this.URL + "/obtenerUsuario/" + iduser);
   }

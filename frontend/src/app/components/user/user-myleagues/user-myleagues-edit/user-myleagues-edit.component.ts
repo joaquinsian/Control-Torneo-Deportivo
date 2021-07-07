@@ -35,7 +35,6 @@ export class UserMyleaguesEditComponent implements OnInit {
       res => {
         this.league.image = res.liga.image;
         this.league.nombre = res.liga.nombre;
-        console.log(this.league);
       },
       err => {
         console.error(err)

@@ -84,7 +84,7 @@ const routes: Routes = [
     path: "admin/charts",
     component: AdminChartsComponent
   },{
-    path: "admin/charts/leagues-by-user-id",
+    path: "admin/charts/:iduser",
     component: AdminChartsLeaguebyidComponent
   },{
     path: "admin/charts/leagues-by-user-id/chart",
