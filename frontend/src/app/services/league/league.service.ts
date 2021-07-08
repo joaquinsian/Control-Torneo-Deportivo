@@ -27,6 +27,10 @@ export class LeagueService {
     return this.http.get<any>(this.URL + "/ligasUser/" + iduser, { headers: allheaders });
   }
 
+  generateReport(idLeague:any){
+    return this.http.get<any>(this.URL + "/reporteTablaLiga/" + idLeague);
+  }
+
   getLeagueById(idleague: any) {
     return this.http.get<any>(this.URL + "/mostrarLigaID/" + idleague);
   }

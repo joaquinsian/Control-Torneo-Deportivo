@@ -32,7 +32,7 @@ export class GetTableComponent implements OnInit {
   }
 
   getTableData(newid:any){
-    this.leagueService.getTableByLeagueId(this.id).subscribe(
+    this.leagueService.getTableByLeagueId(newid).subscribe(
       res => {
         console.log(res)
         this.table = res.tabla;
