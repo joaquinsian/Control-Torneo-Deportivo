@@ -1,130 +1,38 @@
 <div class="m-container w-100">
     <h2 class="m-b-20">JORNADAS</h2>
-    <h3 class="m-t-20">Jornada 1</h3>
-    <table class="table-standard m-table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Local</th>
-                <th>Visitante</th>
-                <th>Marcador</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Lorem</td>
-                <td>Ipsum</td>
-                <td>0 - 1</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Lorem</td>
-                <td>Ipsum</td>
-                <td><button class="btn">Agregar resultado</button></td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Lorem</td>
-                <td>Ipsum</td>
-                <td>0 - 1</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <h3 class="m-t-20">Jornada 1</h3>
-    <table class="table-standard m-table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Local</th>
-                <th>Visitante</th>
-                <th>Marcador</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Lorem</td>
-                <td>Ipsum</td>
-                <td>0 - 1</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Lorem</td>
-                <td>Ipsum</td>
-                <td><button class="btn">Agregar resultado</button></td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Lorem</td>
-                <td>Ipsum</td>
-                <td>0 - 1</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h3 class="m-t-20">Jornada 1</h3>
-    <table class="table-standard m-table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Local</th>
-                <th>Visitante</th>
-                <th>Marcador</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Lorem</td>
-                <td>Ipsum</td>
-                <td>0 - 1</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Lorem</td>
-                <td>Ipsum</td>
-                <td><button class="btn">Agregar resultado</button></td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Lorem</td>
-                <td>Ipsum</td>
-                <td>0 - 1</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h3 class="m-t-20">Jornada 1</h3>
-    <table class="table-standard m-table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Local</th>
-                <th>Visitante</th>
-                <th>Marcador</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Lorem</td>
-                <td>Ipsum</td>
-                <td>0 - 1</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Lorem</td>
-                <td>Ipsum</td>
-                <td><button class="btn">Agregar resultado</button></td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Lorem</td>
-                <td>Ipsum</td>
-                <td>0 - 1</td>
-            </tr>
-        </tbody>
-    </table>
+    <ng-container *ngIf="results.length > 0; else hasnotvalue">
+        <table class="table-standard m-table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Local</th>
+                    <th>Visitante</th>
+                    <th>Jornada</th>
+                    <th>Marcador</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let x of results; let i = index" [attr.data-index]="i">
+                    <td>{{i+1}}</td>
+                    <td>{{x.partido.equipo_local.nombre}}</td>
+                    <td>{{x.partido.equipo_visitante.nombre}}</td>
+                    <td>{{x.partido.jornada}}</td>
+                    <ng-container *ngIf="x.marcador_equipo_local == null && x.marcador_equipo_visitante==null; else hasvalue">
+                        <td><button (click)="addScore(x.partido._id)" class="btn">Agregar Marcador</button></td>
+                    </ng-container>
+                    <ng-template #hasvalue>
+                        <td>0 - 1</td>
+                    </ng-template>
+                </tr>
+            </tbody>
+        </table>
+    </ng-container>
+    <ng-template #hasnotvalue>
+        <button (click)="generateJourneys()" class="btn">Generar Jornadas</button>
+        <div class="cont-centered">
+            <img class="m-b-40" id="sad-face" src="https://img.icons8.com/ios/452/sad.png" alt="sad-face.png">
+            <h1>Aún no hay jornadas :(</h1>
+        </div>
+    </ng-template>
 </div>

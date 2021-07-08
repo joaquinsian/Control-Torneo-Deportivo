@@ -46,22 +46,22 @@ const routes: Routes = [
     path: "user/my-leagues",
     component: UserMyleaguesComponent
   },{
-    path: "user/my-leagues/:idleague",
+    path: "user/my-leagues/league/:idleague",
     component: UserMyleaguesLeaguebyidComponent
   },{
-    path: "user/my-leagues/:idleague/add-team",
+    path: "user/my-leagues/league/:idleague/add-team",
     component: AddTeamComponent
   },{
-    path: "user/my-leagues/:idleague/edit/:idteam",
+    path: "user/my-leagues/league/:idleague/edit/:idteam",
     component: UserMyleaguesLeaguesEditTeamComponent
   },{
-    path: "user/my-leagues/:idleague/get-table",
+    path: "user/my-leagues/league/:idleague/get-table",
     component: GetTableComponent
   },{
-    path: "user/my-leagues/:idleague/chart",
+    path: "user/my-leagues/league/:idleague/chart",
     component: LeaguebyidChartComponent
   },{
-    path: "user/my-leagues/:idleague/journey",
+    path: "user/my-leagues/league/:idleague/journey",
     component: LeaguebyidJourneyComponent
   },{
     path: "user/my-leagues/add",

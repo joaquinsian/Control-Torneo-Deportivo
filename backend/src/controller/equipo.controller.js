@@ -91,6 +91,12 @@ async function equipoId(req, res) {
     })
 }
 
+async function equiposPorLiga(req, res) {
+    await Equipo.find({ liga: req.params.idLiga })
+        .then(doc => res.json(doc))
+        .catch(err => console.error(err))
+}
+
 //Función para editar el equipo
 async function editarEquipo(req, res) {
     var idEquipo = req.params.idEquipo;
@@ -134,6 +140,7 @@ async function eliminarEquipo(req, res) {
 module.exports = {
     createEquipo,
     mostrarEquipos,
+    equiposPorLiga,
     equipoId,
     editarEquipo,
     eliminarEquipo

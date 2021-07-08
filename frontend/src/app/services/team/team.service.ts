@@ -14,6 +14,10 @@ export class TeamService {
     return this.http.get<any>(this.URL + "/equipoId/" + idteam);
   }
 
+  getTeamsByLeagueID(idleague: any){
+    return this.http.get<any>(this.URL + "/equiposPorLiga/" + idleague);
+  }
+
   addTeam(team:any){
     return this.http.post<any>(this.URL + "/crearEquipo",team);
   }

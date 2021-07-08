@@ -6,7 +6,7 @@
             <div>
                 <img style="width: 95%" class="m-b-20" src={{x.image}} alt="logo-img">
                 <h5 class="m-b-20 m-h5">{{x.nombre}}</h5>
-                <a routerLink="/user/my-leagues/{{x._id}}" class="btn a-formatted">Ver Liga &raquo;</a>
+                <a routerLink="/user/my-leagues/league/{{x._id}}" class="btn a-formatted">Ver Liga &raquo;</a>
                 <div class="delete-edit-buttons-container">
                     <button routerLink="/user/my-leagues/edit/{{x._id}}" class="delete-edit-button edit-button-1"><i class="fas fa-pencil-alt"></i></button>
                     <button (click)="deleteLeague(x._id)" class="delete-edit-button delete-button-1"><i class="fas fa-times"></i></button>

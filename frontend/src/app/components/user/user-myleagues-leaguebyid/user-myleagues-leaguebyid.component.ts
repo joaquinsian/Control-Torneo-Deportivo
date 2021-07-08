@@ -55,7 +55,7 @@ export class UserMyleaguesLeaguebyidComponent implements OnInit {
         'error'
       )
     } else {
-      this.router.navigate(["/user/my-leagues/" + this.idleague + "/add-team"]);
+      this.router.navigate(["/user/my-leagues/league/" + this.idleague + "/add-team"]);
     }
   }
 
@@ -109,4 +109,7 @@ export class UserMyleaguesLeaguebyidComponent implements OnInit {
     })
   }
 
+  ngOnDestroy(): void {
+    this.paramsSubscription.unsubscribe();
+  }
 }

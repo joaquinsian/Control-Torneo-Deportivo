@@ -57,4 +57,8 @@ export class AddTeamComponent implements OnInit {
     return !!pattern.test(str);
   }
 
+  ngOnDestroy(): void {
+    this.paramsSubscription.unsubscribe();
+  }
+
 }

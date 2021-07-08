@@ -21,8 +21,6 @@ async function generarPartidos(req, res) {
         numerodepartidosporjornada = Number((listadeequipos.length + 1) / 2)
     }
 
-    console.log("NUMERO DE PARTIDAS" + numerodepartidosporjornada);
-
     for (let x = 0; x < listadeequipos.length; x++) {
         for (let y = 0; y < x; y++) {
             if (x !== y) {
@@ -37,15 +35,16 @@ async function generarPartidos(req, res) {
         }
     }
 
-    console.log(arrayjornadas);
     for (let x = 0; x < arrayjornadas.length; x++) {
         let partidos = new Partidos(arrayjornadas[x]);
-        resultados.push(await partidos.save(),
-            modelResultado.partido = partidos._id,
+        partidos.save(),
+            modelResultado = new Resultado_Partido();
+        modelResultado.partido = partidos._id,
             modelResultado.marcador_equipo_local = null,
             modelResultado.marcador_equipo_visitante = null,
             modelResultado.save((err, resultado) => {
                 if (err) {
+                    console.error(err)
                     return res.status(500).send({ mensaje: "Error en la petición" })
                 } else if (!resultado) {
                     return res.status(500).send({ mensaje: "No se ha podido almacenar el resultado" })
@@ -53,10 +52,9 @@ async function generarPartidos(req, res) {
                     console.log("Resultado almacenado");
                 }
             })
-        );
     }
 
-    res.json(resultados);
+    res.status(200).json({ mensaje: "Datos Guardados" })
 }
 
 //Función para obtener los partidos
@@ -69,7 +67,7 @@ async function obtenerPartidos(req, res) {
         } else if (!partidos) {
             return res.status(500).send({ mensaje: "No se han podido obtener los partidos" })
         } else {
-            return res.status(200).send({ partidos })
+            return res.status(200).send(partidos)
         }
     })
 }
