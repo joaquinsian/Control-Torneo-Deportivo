@@ -74,6 +74,9 @@ export class LeaguebyidJourneyComponent implements OnInit {
           cancelButtonText: 'Cancelar'
         }).then((result2) => {
           this.score.marcador_equipo_visitante = Number(result2);
+          console.log(this.score);
+          console.log(newidmatch);
+          /* 
           this.resultService.addScore(newidmatch,this.score).subscribe(
             res => {
               this.getResults();
@@ -82,8 +85,8 @@ export class LeaguebyidJourneyComponent implements OnInit {
             err => {
               console.error(err);
               
-            }
-          )
+            } )*/
+          
         })
       
       } else if (result.value == "") {

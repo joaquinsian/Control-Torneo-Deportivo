@@ -64,7 +64,7 @@ const routes: Routes = [
     path: "user/my-leagues/league/:idleague/journey",
     component: LeaguebyidJourneyComponent
   },{
-    path: "user/my-leagues/add",
+    path: "user/my-leagues/add-league",
     component: UserMyleaguesAddComponent
   },{
     path: "user/my-leagues/edit/:id",
