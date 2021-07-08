@@ -6,7 +6,7 @@ import { Router } from "@angular/router"
   providedIn: 'root'
 })
 export class LoginService {
-  private URL = "http://localhost:3000/torneodeportivo";
+  private URL = "https://control-deportivo-in6bm.herokuapp.com/torneodeportivo";
   constructor(private http:HttpClient, private router:Router) { }
 
   signIn(user:any) {

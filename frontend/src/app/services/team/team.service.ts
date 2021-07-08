@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 })
 export class TeamService {
 
-  private URL = "http://localhost:3000/torneodeportivo";
+  private URL = "https://control-deportivo-in6bm.herokuapp.com/torneodeportivo";
 
   constructor(private http: HttpClient) { }
 
