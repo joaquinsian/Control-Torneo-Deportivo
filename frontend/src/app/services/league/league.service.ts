@@ -15,6 +15,12 @@ export class LeagueService {
     return this.http.post<any>(this.URL + "/crearLiga", league, { headers: allheaders });
   }
 
+  addLeagueAdmin(token: any, league: any){
+    const headers = new HttpHeaders();
+    const allheaders = headers.set("authorization", token);
+    return this.http.post<any>(this.URL + "/crearLigaAdmin", league, { headers: allheaders });
+  }
+
   getLeagueByUserId(token: any, iduser: any) {
     const headers = new HttpHeaders();
     const allheaders = headers.set("authorization", token);

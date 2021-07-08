@@ -1,14 +1,19 @@
 <div class="m-container w-100">
-    <h2 class="m-b-20">LIGAS DE FABIO LOPEZ</h2>
-    <button class="btn m-b-20 add-btn"><i class="fas fa-plus"></i> Agregar Liga</button>
+    <h2 class="m-b-20">LIGAS DE {{user.nombre | uppercase}}</h2>
+    <button routerLink="/admin/leagues/{{iduser}}/add" class="btn m-b-20 add-btn"><i class="fas fa-plus"></i> Agregar Liga</button>
     <div class="grid-4">
-        <div style="position: relative" class="m-container shadowed-div cont-centered">
-            <img style="width: 95%" class="m-b-20" src="https://seeklogo.com/images/P/premier-league-new-logo-D22A0CE87E-seeklogo.com.png" alt="logo-img">
-            <h5 class="m-b-20 m-h5">Premier League</h5>
-            <a routerLink="/admin/leagues/leagues-by-user-id/edit" class="btn a-formatted">Editar Liga &raquo;</a>
-            <div class="delete-edit-buttons-container">
-                <button class="delete-edit-button delete-button-1"><i class="fas fa-times"></i></button>
+        <div *ngFor="let x of leagues" style="position: relative" class="f-centered-container m-container shadowed-div cont-centered">
+            <div>
+                <img style="width: 95%" class="m-b-20" src={{x.image}} alt="logo-img">
+                <h5 class="m-b-20 m-h5">{{x.nombre}}</h5>
+                <a routerLink="/admin/leagues/{{iduser}}/edit/{{x._id}}" class="btn a-formatted">Editar Liga &raquo;</a>
             </div>
         </div>
     </div>
+    <ng-container *ngIf="leagues.length === 0">
+        <div class="cont-centered">
+            <img class="m-b-40" id="sad-face" src="https://img.icons8.com/ios/452/sad.png" alt="sad-face.png">
+            <h1>Aún no hay ligas :(</h1>
+        </div>
+    </ng-container>
 </div>

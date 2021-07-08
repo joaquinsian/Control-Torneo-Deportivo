@@ -6,14 +6,14 @@
         <div class="cont-centered">
             <h2>AGREGAR EQUIPO</h2>
         </div>
-        <form method="post" ngNativeValidate>
+        <form (ngSubmit)="addTeam()" method="post" ngNativeValidate>
             <div class="form-item-container">
                 <h4>Nombre de equipo</h4>
-                <input class="input-field w-std" type="text" name="team-name" placeholder="Team Name">
+                <input [(ngModel)]="team.nombre" required="required" class="input-field w-std" type="text" name="team-name" placeholder="Team Name">
             </div>
             <div class="form-item-container">
                 <h4>Imagen (Url)</h4>
-                <input class="input-field w-std" type="text" name="img-team" placeholder="http://domain.com/image">
+                <input [(ngModel)]="team.imagen" required="required" class="input-field w-std" type="text" name="img-team" placeholder="http://domain.com/image">
             </div>
             <div class="form-item-container">
                 <input class="btn w-100" type="submit" value="Agregar Equipo">

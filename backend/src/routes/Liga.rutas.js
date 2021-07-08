@@ -6,7 +6,8 @@ const ligaController = require('../controller/liga.controller');
 var autentication = require('../middlewares/authenticated');
 var api = express.Router();
 
-api.post('/crearLiga', autentication.ensureAuth ,ligaController.createLiga);
+api.post('/crearLiga', autentication.ensureAuth, ligaController.createLiga);
+api.post("/crearLigaAdmin", autentication.ensureAuth, ligaController.createLigaAdmin);
 api.get('/mostrarLigas', ligaController.mostrarLigas);
 api.get('/ligasUser/:idUsuario', autentication.ensureAuth, ligaController.ligasForUser)
 api.get('/misLigas', autentication.ensureAuth, ligaController.misLigas)

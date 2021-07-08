@@ -1,10 +1,10 @@
 <div class="m-container">
     <h2 class="m-b-20">USUARIOS</h2>
     <div class="grid-4">
-        <div style="position: relative" class="m-container shadowed-div cont-centered">
+        <div *ngFor="let x of users" style="position: relative" class="m-container shadowed-div cont-centered">
             <img style="width: 95%" class="m-b-20" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png" alt="user-icon.png">
-            <h5 class="m-b-20 m-h5">Fabio Lopez</h5>
-            <a routerLink="/admin/leagues/leagues-by-user-id" class="btn a-formatted">Ver Ligas &raquo;</a>
+            <h5 class="m-b-20 m-h5">{{x.nombre}}</h5>
+            <a routerLink="/admin/leagues/{{x._id}}" class="btn a-formatted">Ver Ligas &raquo;</a>
         </div>
     </div>
 </div>

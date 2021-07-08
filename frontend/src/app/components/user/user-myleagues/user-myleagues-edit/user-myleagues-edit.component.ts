@@ -19,7 +19,9 @@ export class UserMyleaguesEditComponent implements OnInit {
     image: ""
   }
 
-  constructor(private titleService: Title,private route: ActivatedRoute,private leagueService:LeagueService) {
+  constructor(private titleService: Title,
+    private route: ActivatedRoute,
+    private leagueService:LeagueService) {
     this.titleService.setTitle("Editar Liga");
   }
 

@@ -42,6 +42,41 @@ async function createLiga(req, res) {
     }
 }
 
+
+async function createLigaAdmin(req, res) {
+    var modeloliga = new Liga();
+    var params = req.body;
+
+    if (params.nombre) {
+        modeloliga.nombre = params.nombre;
+        modeloliga.image = params.image;
+        modeloliga.creador = params.creador;
+
+        await Liga.find({
+            $or: [
+                { nombre: modeloliga.nombre },
+                { image: modeloliga.image }
+            ]
+        }).exec((err, ligaEncontrada) => {
+            if (err) {
+                return res.status(500).send({ mensaje: "Error en la petición" })
+            } else if (ligaEncontrada && ligaEncontrada.length >= 1) {
+                return res.status(500).send({ mensaje: "Liga Existente!" })
+            } else {
+                modeloliga.save((err, ligaSave) => {
+                    if (err) {
+                        return res.status(500).send({ mensaje: "Error en la petición" })
+                    } else if (!ligaSave) {
+                        return res.status(500).send({ mensaje: "No se ha podido guardar la liga" })
+                    } else {
+                        return res.status(200).send({ ligaSave })
+                    }
+                })
+            }
+        })
+    }
+}
+
 //mostrar ligas
 async function mostrarLigas(req, res) {
     await Liga.find().populate('creador', 'nombre email').exec((err, ligas) => {
@@ -219,6 +254,7 @@ async function generadorTablaLiga(req, res) {
 
 module.exports = {
     createLiga,
+    createLigaAdmin,
     mostrarLigas,
     misLigas,
     ligasForUser,

@@ -24,6 +24,7 @@ import { AdminAddTeamComponent } from './components/admin/admin-leagues/admin-le
 import { AdminChartsComponent } from './components/admin/admin-charts/admin-charts.component';
 import { AdminChartsLeaguebyidComponent } from './components/admin/admin-charts/admin-charts-leaguebyid/admin-charts-leaguebyid.component';
 import { AdminChartsLeaguebyidChartComponent } from './components/admin/admin-charts/admin-charts-leaguebyid/admin-charts-leaguebyid-chart/admin-charts-leaguebyid-chart.component';
+import { AdminAddLeagueComponent } from './components/admin/admin-leagues/admin-leagues-leaguebyid/admin-add-league/admin-add-league.component';
 
 const routes: Routes = [
   {
@@ -72,13 +73,16 @@ const routes: Routes = [
     path: "admin/leagues",
     component: AdminLeaguesComponent
   },{
-    path: "admin/leagues/leagues-by-user-id",
+    path: "admin/leagues/:iduser",
     component: AdminLeaguesLeaguebyidComponent
   },{
-    path: "admin/leagues/leagues-by-user-id/edit",
+    path: "admin/leagues/:iduser/edit/:idleague",
     component: AdminEditLeagueComponent
   },{
-    path: "admin/leagues/leagues-by-user-id/edit/add-team",
+    path: "admin/leagues/:iduser/add",
+    component: AdminAddLeagueComponent
+  },{
+    path: "admin/leagues/:iduser/edit/:idleague/add-team",
     component: AdminAddTeamComponent
   },{
     path: "admin/charts",

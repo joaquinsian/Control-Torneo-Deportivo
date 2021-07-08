@@ -1,13 +1,13 @@
 <div class="m-container">
     <h2>EDITAR LIGA</h2>
-    <form class="m-b-20" action="#">
+    <form class="m-b-20" (submit)="editLeague()">
         <div class="form-item-container">
             <h4>Nombre de Liga</h4>
-            <input class="input-field w-std" type="text" name="name" placeholder="League Name">
+            <input [(ngModel)]="league.nombre" class="input-field w-std" type="text" name="name" placeholder="League Name">
         </div>
         <div class="form-item-container">
             <h4>Imagen (Url)</h4>
-            <input class="input-field w-std" type="text" name="img" placeholder="http://domain.com/image.png">
+            <input [(ngModel)]="league.image" class="input-field w-std" type="text" name="img" placeholder="http://domain.com/image.png">
         </div>
         <div class="form-item-container">
             <input class="btn" type="submit" value="Actualizar">
@@ -15,14 +15,20 @@
     </form>
 
     <h2 class="m-b-20">EQUIPOS</h2>
-    <button routerLink="/admin/leagues/leagues-by-user-id/edit/add-team" class="btn m-b-20 add-btn"><i class="fas fa-plus"></i> Agregar Equipo</button>
+    <button routerLink="/admin/leagues/{{iduser}}/edit/{{idleague}}/add-team" class="btn m-b-20 add-btn"><i class="fas fa-plus"></i> Agregar Equipo</button>
     <div class="grid-4">
-        <div style="position: relative" class="m-container shadowed-div cont-centered">
-            <img style="width: 95%" class="m-b-20" src="https://seeklogo.com/images/P/premier-league-new-logo-D22A0CE87E-seeklogo.com.png" alt="logo-img">
-            <h5 class="m-b-20 m-h5">Premier League</h5>
+        <div *ngFor="let x of teams" style="position: relative" class="m-container shadowed-div cont-centered">
+            <img style="width: 95%" class="m-b-20" src={{x.imagen}} alt="logo-img">
+            <h5 class="m-b-20 m-h5">{{x.nombre}}</h5>
             <div class="delete-edit-buttons-container">
                 <button class="delete-edit-button delete-button-1"><i class="fas fa-times"></i></button>
             </div>
         </div>
     </div>
+    <ng-container *ngIf="teams.length === 0">
+        <div class="cont-centered">
+            <img class="m-b-40" id="sad-face" src="https://img.icons8.com/ios/452/sad.png" alt="sad-face.png">
+            <h1>Aún no hay equipos :(</h1>
+        </div>
+    </ng-container>
 </div>
